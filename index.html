@@ -4,208 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bluebirds Match Tracker</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding: 20px;
-	background-color:black;
-    }
+  
+    <link rel="stylesheet" href="MatchTracker.css" />
 
-    button {
-      font-size: 12px;
-      padding: 10px;
-      margin: 10px;
-      cursor: pointer;
-    }
-
-    #timer {
-
-      font-weight: bold; /* Make the text bold */
-	background-color:black;
-	font-family: 'Courier New', monospace; 
-	color:limegreen;
-	font-size: 6em;
-    }
-	
-h2 {
-  background-color:blue;
-  color: white;
-}
-
-
-    #hidden {
-      display: none;
-    }
-	
-	    .column {
-      display: inline-block;
-      vertical-align: top;
-      width: 40%;
-      margin-right: 8px;
-    }
-
-    .column p {
-      text-align: left;
-      font-size: 14px;
-      font-weight: normal; /* Not bold */
-    }
-
-    #team-buttons {
-      margin-top: 10px;
-    }
-
-    #score-counter {
-      font-size: 2em; /* Double the font size */
-      font-weight: bold; /* Make the text bold */
-    }
-
-    #shareButton {
-      background-color: #007BFF;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 10px;
-      cursor: pointer;
-    }
-	
-	 #clearLocalStorageButton {
-      background-color: #007BFF;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 10px;
-      cursor: pointer;
-    }
-
- #up-down-Button {
-      background-color: #007BFF;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 4px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	
-	#upButtonHome {
-	display:none;
-      background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-
-	#upButtonAway {
-	display:none;
-      background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	
-	#downButtonHome {
-		
-      background-color:Red;
-      color:white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	#downButtonAway {
-      background-color:Red;
-      color:white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	
-	 #goalButtonAway {
-	 background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 12px;
-      
-    }
-	
-	 #goalButtonHome {
-	 background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 12px;
-    
-    }
-	
-
-#playerSelect {
-      background-color:black;
-      color:white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-#actionSelect {
-      background-color:black;
-      color:white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-#awayElapsedTime {
-      color:white;
-      font-size: 16px;
-      }
-
-#homeElapsedTime {
-      color:white;
-      font-size: 16px;
-      }
-	  
-	  #quarter {
-      color:white;
-      font-size: 16px;
-      }
-	  
-	   .menu-icon {
-            display: block;
-            cursor: pointer;
-        }
-
-        .menu-links {
-            display: none;
-        }
-
-        .menu-links.active {
-            display: block;
-        }
-
-        .footer {
-            padding-top: 100px;
-        }
-
-  </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -215,29 +20,24 @@ h2 {
 	
 
 
-  <button id="timerButton" onclick="startTimer(12.5)">12.5M</button>
+ <button id="timerButton12" onclick="startTimer(12.5)">12.5M</button>
  <button id="pauseResumeButton" onclick="pauseResumeTimer()" disabled>Pause</button>
-
-            <button id="timerButton" onclick="startTimer(15)">15M</button>
+ <button id="timerButton15" onclick="startTimer(15)">15M</button>
       
- 
  <p id="quarter">Current Quarter: 1</p>
   <div id="timerContainer" >
     <div id="timer"></div>
-   
   </div>
-<div></div>
+
+  <div></div>
+
   <div class="column" id="homeColumn">
     <h2>Bluebirds <span id="homeScore" class="score-counter">0</span></h2>
-    <div class="team-buttons">
- <button id="goalButtonHome" onclick="recordGoal('home')">Goal</button>
-     <button id="upButtonHome" onclick="changeScore('home', 1)">GoalHidden</button>
-      <button id="downButtonHome" onclick="changeScore('home', -1)">-Goal</button>
-
-
-  
-
-    </div>
+      <div class="team-buttons">
+    <button id="goalButtonHome" onclick="recordGoal('home')">Goal</button>
+    <button id="upButtonHome" onclick="changeScore('home', 1)">GoalHidden</button>
+    <button id="downButtonHome" onclick="changeScore('home', -1)">-Goal</button>
+  </div>
     <p id="homeElapsedTime"></p>
   </div>
 
@@ -271,6 +71,7 @@ h2 {
                 <option>Sophia L</option>
                 <option>Megs</option>
                 <option>Lana</option>
+                <option>Opposition</option>
             </select>
             <select id="actionSelect">
                 <option value="">Select Action</option>
@@ -304,15 +105,40 @@ h2 {
 <div></div>
 
 <div id="footer">
-  <p id="quarter">Current Quarter: 1</p>
-<button id="shareButton" onclick="copyToClipboard()">Copy Match Details</button>
+  <h2>General Notes</h2>
+
+    <label for="notesInput">General Notes:</label>
+    <textarea id="notesInput" rows="4" cols="50"></textarea>
+    <button onclick="addNotes()">Add</button>
+
+    <div id="homeScores"></div>
+
+    <h2>Training Areas</h2>
+    <label for="trainingAreaSelect">Select Training Area:</label>
+    <select id="trainingAreaSelect">
+        <option value="heading">Heading</option>
+        <option value="throwins">Throw-ins</option>
+        <option value="defendingCorners">Defending Corners</option>
+        <option value="attackingCorners">Attacking Corners</option>
+    </select>
+    <button onclick="trainingAreas()">Add Training Area</button>
+
+   <div></div>
+   <h2>Awards & Support</h2>
+   <div>Players Player:</div>
+   <div>Choaches Player:</div>
+   <div>Player of Steel:</div>
+   <div>Referee:</div>
+   <div><span></span></div>
+   <div>Livetext updates:</div>
+   <div>Setup/Packaway:</div>
+<div>
+ <button id="shareButton" onclick="copyToClipboard()">Copy Match Details</button>
 <button id="clearLocalStorageButton" onclick="clearLocalStorage()">Reset Data</button>
-</div>
+</div></div>
 
 
- 
-
-  <script>
+   <script>
     let startTime;
     let elapsedPausedTime = 0;
     let isTimerPaused = false;
@@ -330,6 +156,40 @@ let show15MinuteButton = true; // Initial state
     window.onload = function () {
       loadFromLocalStorage();
     };
+
+
+
+    // General Notes script to review
+    function addNotes() {
+            const notesInput = document.getElementById('notesInput');
+            const notes = notesInput.value.trim();
+            
+            if (notes) {
+                const homeScores = document.getElementById('homeScores');
+                const newEntry = document.createElement('div');
+                newEntry.textContent = notes;
+                homeScores.appendChild(newEntry);
+                notesInput.value = ''; // Clear the input field after adding notes
+            }
+        }
+
+
+/*
+    /// Training Areas
+    function trainingAreas() {
+            const trainingAreaSelect = document.getElementById('trainingAreaSelect');
+            const selectedTrainingArea = trainingAreaSelect.value;
+
+            if (selectedTrainingArea) {
+                const homeScores = document.getElementById('homeScores');
+                const newEntry = document.createElement('div');
+                newEntry.textContent = selectedTrainingArea;
+                homeScores.appendChild(newEntry);
+            }
+        }
+
+
+    ///// Toggle Menu
 	
 	
 	 function toggleMenu() {
@@ -360,7 +220,7 @@ function togglePageSeparator() {
             pageSeparatorContent.classList.toggle('hidden');
         }
 
-
+*/
     function loadFromLocalStorage() {
       const storedHomeScore = localStorage.getItem('homeScore');
       const storedAwayScore = localStorage.getItem('awayScore');
@@ -416,7 +276,7 @@ function togglePageSeparator() {
             const secondsElapsed = Math.floor((elapsedMillis % (1000 * 60)) / 1000);
             
             document.getElementById('timerContainer').classList.remove('hidden');
-            document.getElementById('timer').innerHTML = `${minutesElapsed}m ${secondsElapsed}s`;
+            document.getElementById('timer').innerHTML = `${minutesElapsed}:${secondsElapsed}`;
           }
         }
       }, 1000);
@@ -424,6 +284,8 @@ function togglePageSeparator() {
       // Save data to local storage
       saveToLocalStorage();
     }
+
+    //PauseResume Time
 
     function pauseResumeTimer() {
       isTimerPaused = !isTimerPaused;
@@ -436,6 +298,9 @@ function togglePageSeparator() {
       // Save data to local storage
       saveToLocalStorage();
     }
+
+
+//RecordGoal
 
     function recordGoal(team) {
       const currentTime = document.getElementById('timer').innerText;
@@ -463,6 +328,7 @@ function togglePageSeparator() {
       saveToLocalStorage();
     }
 
+  //ChangeScore
     function changeScore(team, value) {
       const scoreElement = document.getElementById(`${team}Score`);
       const currentScore = parseInt(scoreElement.innerText);
@@ -482,7 +348,8 @@ function togglePageSeparator() {
       saveToLocalStorage();
     }
 	
-	
+//ActionSelection
+
 	function handleActionSelection() {
         const selectedPlayer = document.getElementById('playerSelect').value;
         const selectedAction = document.getElementById('actionSelect').value;
@@ -504,7 +371,7 @@ function togglePageSeparator() {
 document.getElementById('actionSelect').addEventListener('change', handleActionSelection);
  
 
-
+//UpdateUI
     function updateUI() {
       // Update your UI based on the loaded data
       document.getElementById('homeScore').innerText = homeScore;
@@ -518,12 +385,16 @@ document.getElementById('actionSelect').addEventListener('change', handleActionS
     }
 
 
+    // GetCurrentDate and Time
  function getCurrentDateTime() {
       const now = new Date();
       const date = now.toLocaleDateString();
       const time = now.toLocaleTimeString();
       return `${date} ${time}`;
     }
+
+
+  //Copy to Clipboard
 
  function copyToClipboard() {
       const matchDetails = `
@@ -532,8 +403,8 @@ document.getElementById('actionSelect').addEventListener('change', handleActionS
 
         Opposition Score: ${awayScore}
         Goals: ${formatGoals(awayGoals)}
-		Date & Time: ${getCurrentDateTime()}
-      `;
+		    
+        Date & Time: ${getCurrentDateTime()}`;
 
       const textarea = document.createElement('textarea');
       textarea.value = matchDetails;
@@ -549,12 +420,15 @@ function formatGoals(goals) {
       return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
     }
 
+
+//Reset local data / clear local storage
 function clearLocalStorage() {
       localStorage.clear();
       alert('Local storage cleared!');
 location.reload();
     }
 	
+
 
 function saveToLocalStorage() {
       localStorage.setItem('homeScore', homeScore.toString());
@@ -570,4 +444,3 @@ function saveToLocalStorage() {
 
 </body>
 </html>
-

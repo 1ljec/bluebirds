@@ -1,0 +1,200 @@
+body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+	background-color:grey;
+    }
+
+    button {
+      font-size: 12px;
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    #timer {
+
+      font-weight: bold; /* Make the text bold */
+	background-color:black;
+	font-family: 'Courier New', monospace; 
+	color:limegreen;
+	font-size: 6em;
+    }
+	
+h2 {
+  background-color:blue;
+  color: white;
+}
+
+
+    #hidden {
+      display: none;
+    }
+	
+	    .column {
+      display: inline-block;
+      vertical-align: top;
+      width: 40%;
+      margin-right: 8px;
+    }
+
+    .column p {
+      text-align: left;
+      font-size: 14px;
+      font-weight: normal; /* Not bold */
+    }
+
+    #team-buttons {
+      margin-top: 10px;
+    }
+
+    #score-counter {
+      font-size: 2em; 
+      font-weight: bold; 
+    }
+
+    #shareButton {
+      background-color: #007BFF;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+	
+	 #clearLocalStorageButton {
+      background-color: #007BFF;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+ #up-down-Button {
+      background-color: #007BFF;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 4px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+	
+	#upButtonHome {
+	display:none;
+      background-color:Green;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+	#upButtonAway {
+	display:none;
+      background-color:Green;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+	
+	#downButtonHome {
+		
+      background-color:Red;
+      color:white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+	#downButtonAway {
+      background-color:Red;
+      color:white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      
+      cursor: pointer;
+      border-radius: 12px;
+    }
+	
+	 #goalButtonAway {
+	 background-color:Green;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 12px;
+      
+    }
+	
+	 #goalButtonHome {
+	 background-color:Green;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 12px;
+    
+    }
+	
+
+#playerSelect {
+      background-color:black;
+      color:white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+#actionSelect {
+      background-color:black;
+      color:white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+#awayElapsedTime {
+      color:white;
+      font-size: 16px;
+      }
+
+#homeElapsedTime {
+      color:white;
+      font-size: 16px;
+      }
+	  
+	  #quarter {
+      color:white;
+      font-size: 16px;
+      }
+	  
+	   .menu-icon {
+            display: block;
+            cursor: pointer;
+        }
+
+        .menu-links {
+            display: none;
+        }
+
+        .menu-links.active {
+            display: block;
+        }
+
+        .footer {
+            padding-top: 100px;
+        }
