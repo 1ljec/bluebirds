@@ -1,0 +1,44 @@
+In this example:
+
+We introduce a timerCompleted variable to keep track of whether the timer has completed or not.
+When a goal is recorded, we check if the timer has completed (timerCompleted is true). If it has completed, we label the time as "extra time."
+Otherwise, the time is labeled as the current elapsed time.
+This approach allows goals to be recorded even after the timer completes, with the time labeled appropriately.
+
+---------------------------------------------------------------------------------------------------
+
+let timerCompleted = false;
+let currentTime = 0;
+
+// Function to start the timer
+function startTimer(minutes) {
+    let seconds = minutes * 60;
+    let timerInterval = setInterval(() => {
+        currentTime++;
+        seconds--;
+
+        // Check if timer is completed
+        if (seconds <= 0) {
+            clearInterval(timerInterval);
+            timerCompleted = true;
+            alert("End of quarter (extra time)");
+        }
+    }, 1000);
+}
+
+// Function to record a goal
+function recordGoal(team) {
+    if (timerCompleted) {
+        console.log("Goal recorded during extra time for " + team + " team at " + currentTime + " minutes");
+    } else {
+        console.log("Goal recorded for " + team + " team at " + currentTime + " minutes");
+    }
+}
+
+// Example usage
+startTimer(1); // Start a 1-minute timer
+
+// Simulate recording a goal after the timer completes
+setTimeout(() => {
+    recordGoal("Home"); // Record a goal after the timer completes
+}, 1500); // Simulating 1.5 seconds after the timer completes

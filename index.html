@@ -17,20 +17,18 @@
 
  <!-- <h1 style="color:green;">Bluebirds Match Tracker</h1>-->
  
-	
-
-
- <button id="timerButton12" onclick="startTimer(12.5)">12.5M</button>
+	 <button id="timerButton12" onclick="startTimer(12.5)">12.5M</button>
  <button id="pauseResumeButton" onclick="pauseResumeTimer()" disabled>Pause</button>
  <button id="timerButton15" onclick="startTimer(15)">15M</button>
       
  <p id="quarter">Current Quarter: 1</p>
   <div id="timerContainer" >
     <div id="timer"></div>
+    <p></p>
   </div>
 
-  <div></div>
 
+<!--Home & Opposition Columns -->
   <div class="column" id="homeColumn">
     <h2>Bluebirds <span id="homeScore" class="score-counter">0</span></h2>
       <div class="team-buttons">
@@ -52,6 +50,67 @@
   </div>
 
  
+<div></div>
+
+
+<!-- Accordian Divs test-->
+<div class="accordion">
+  <h2>General Notes   <button onclick="toggleDiv('expandableDiv1')">+ / -</button></h2>
+
+  <div id="expandableDiv1" class="expandableDiv">
+      <!-- Content inside the expandable div 1 -->
+      <!--    <label for="notesInput">General Notes:</label>-->
+    <textarea id="notesInput" rows="4" cols="50"></textarea>
+    <button onclick="addNotes()">Add</button>
+
+    <div id="homeScores"></div>
+  </div>
+
+<!--DIV 2 on collapse-->
+
+  <h2>Focus Training Areas   <button onclick="toggleDiv('expandableDiv2')">+ / -</button></h2>
+ 
+  <div id="expandableDiv2" class="expandableDiv">
+      <!-- Content inside the expandable div 2 -->
+         <!-- <label for="trainingAreaSelect">Select Training Area:</label>-->
+    <select id="trainingAreaSelect">
+      <option value="attackingCorners">Attacking Corners</option>
+      <option value="defendingCorners">Defending Corners</option>
+      <option value="heading">Heading</option>
+      <option value="throwins">Throw-ins</option>
+    </select>
+    <button onclick="trainingAreas()">Add Training Area</button>
+  </div>
+  
+
+  <!--DIV 3 on collapse-->
+  <h2>Awards [ & ] Support <button onclick="toggleDiv('expandableDiv3')">+ / -</button> </h2>
+  
+  <div id="expandableDiv3" class="expandableDiv">
+      <!-- Content inside the expandable div 3 -->
+      
+
+      <div>Players Player:</div>
+      <div>Choaches Player:</div>
+      <div>Player of Steel:</div>
+      <div>Referee:</div>
+      <div><p></p></div>
+      <div>Livetext updates:</div>
+      <div>Setup/Packaway:</div>
+  </div>
+</div>
+
+
+<!--footer-->
+
+<div id="footer">
+  <h2></h2>
+   <button id="shareButton" onclick="copyToClipboard()">Copy Match Details</button>
+  <button id="clearLocalStorageButton" onclick="clearLocalStorage()">Reset Data</button>
+</div>
+
+
+
 <!--
 <div style="margin-top: 20px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid white; border-bottom: 1px solid white;">
         <div id="pageSeparatorContent">
@@ -102,40 +161,6 @@
 
 
 -->
-<div></div>
-
-<div id="footer">
-  <h2>General Notes</h2>
-
-    <label for="notesInput">General Notes:</label>
-    <textarea id="notesInput" rows="4" cols="50"></textarea>
-    <button onclick="addNotes()">Add</button>
-
-    <div id="homeScores"></div>
-
-    <h2>Training Areas</h2>
-    <label for="trainingAreaSelect">Select Training Area:</label>
-    <select id="trainingAreaSelect">
-        <option value="heading">Heading</option>
-        <option value="throwins">Throw-ins</option>
-        <option value="defendingCorners">Defending Corners</option>
-        <option value="attackingCorners">Attacking Corners</option>
-    </select>
-    <button onclick="trainingAreas()">Add Training Area</button>
-
-   <div></div>
-   <h2>Awards & Support</h2>
-   <div>Players Player:</div>
-   <div>Choaches Player:</div>
-   <div>Player of Steel:</div>
-   <div>Referee:</div>
-   <div><span></span></div>
-   <div>Livetext updates:</div>
-   <div>Setup/Packaway:</div>
-<div>
- <button id="shareButton" onclick="copyToClipboard()">Copy Match Details</button>
-<button id="clearLocalStorageButton" onclick="clearLocalStorage()">Reset Data</button>
-</div></div>
 
 
    <script>
@@ -156,6 +181,25 @@ let show15MinuteButton = true; // Initial state
     window.onload = function () {
       loadFromLocalStorage();
     };
+
+
+
+/// Accordian function
+function toggleDiv(id) {
+    var div = document.getElementById(id);
+    var allDivs = document.querySelectorAll('.expandableDiv');
+
+    // Collapse all other expandable divs
+    allDivs.forEach(function(item) {
+        if (item.id !== id) {
+            item.style.maxHeight = '0';
+        }
+    });
+
+    // Toggle the selected expandable div
+    div.style.maxHeight = div.style.maxHeight ? null : div.scrollHeight + 'px';
+}
+
 
 
 
@@ -438,8 +482,14 @@ function saveToLocalStorage() {
       localStorage.setItem('currentQuarter', currentQuarter.toString());
     }
 
+/* Toggle show& hidea div
 
-   
+    function toggleDiv() {
+    var div = document.getElementById("expandableDiv");
+    div.style.maxHeight = div.style.maxHeight ? null : div.scrollHeight + "px";
+}
+
+   */
   </script>
 
 </body>
