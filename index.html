@@ -23,7 +23,7 @@
  <button id="pauseResumeButton" onclick="pauseResumeTimer()" disabled>Pause</button>
  <button id="timerButton15" onclick="startTimer(15)">15M</button>
       
- 
+ <!--Timer itself-->
   <div id="timerContainer" >
     <div id="timer"></div>
     <p><p id="quarter">Current Quarter: 1</p></p>
@@ -65,21 +65,21 @@
 <!--MATCH NOTES-->
 
 <div class="accordion"> 
-<h2> <i class="fa fa-file-text-o"></i> 
+<h2 onclick="showNotes()"> <i class="fa fa-file-text-o"></i> 
   <span style="padding: 10px;">Match Notes </span>  
-  <i class="fas fa-caret-down" onclick="showNotes()"> </i></h2>
+  <i class="fas fa-caret-down" > </i></h2>
  
 
   <div id="expandableDiv1"> <!--class="expandableDiv">-->
   <div>  <label>Player:</label>
-    <select id="playerSelect">
+    <select id="playerSelect" class="selectList">
      <option value="">Select...</option>
       <option>Paige</option>  <option>Ella</option> <option>Jenna</option>  <option>Rosie</option><option>Mimi</option><option>Flora</option>                <option>Belle</option>                 <option>Amaya</option> <option>Eliza</option>                 <option>Jodie</option>                <option>Sophia T</option>              <option>Sophia L</option>                 <option>Megs</option>                  <option>Lana</option>                <option>Opposition</option>
   </select>
 </div>
 <div>
   <label>Action:</label>
-  <select id="actionSelect">
+  <select id="actionSelect" class="selectList">
       <option value="">Select...</option>                 <option>Won midfield battle</option>                 <option>Won defensive battle</option>                <option>Created chance</option> <option>Ran down wing</option>                <option>Floor save</option>                <option>Standing save</option>                <option>Throw in</option><option>Corner</option>            
   </select>
     </div>
