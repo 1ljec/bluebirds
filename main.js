@@ -51,7 +51,7 @@ function toggleDiv(id) {
                 notesInput.value = ''; // Clear the input field after adding notes
             }
         }
-
+        elapsedTime.appendChild(newEntry);
 
 /*
     /// Training Areas
@@ -66,37 +66,6 @@ function toggleDiv(id) {
                 homeScores.appendChild(newEntry);
             }
         }
-
-
-    ///// Toggle Menu
-	
-	
-	 function toggleMenu() {
-            var menuLinks = document.querySelector('.menu-links');
-            menuLinks.classList.toggle('active');
-
-            var clearButton = document.getElementById('clearLocalStorageButton');
-            clearButton.style.display = clearButton.style.display === 'none' ? 'block' : 'none';
-
-            var shareButton = document.getElementById('shareButton');
-            shareButton.style.display = shareButton.style.display === 'none' ? 'block' : 'none';
-        }
-	
-	   function handlePersonSelection() {
-        const selectedPerson = document.getElementById('personSelect').value;
-        const personDisplay = document.getElementById('personDisplay');
-
-        if (selectedPerson) {
-            personDisplay.textContent = `Selected Person: ${selectedPerson}`;
-        }
-    }
-
-    document.getElementById('personSelect').addEventListener('change', handlePersonSelection);
-
-
-function togglePageSeparator() {
-            const pageSeparatorContent = document.getElementById('pageSeparatorContent');
-            pageSeparatorContent.classList.toggle('hidden');
         }
 
 */
