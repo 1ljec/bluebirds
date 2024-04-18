@@ -49,9 +49,11 @@ function toggleDiv(id) {
                 newEntry.textContent = notes;
                 homeScores.appendChild(newEntry);
                 notesInput.value = ''; // Clear the input field after adding notes
+                elapsedTime.appendChild(newEntry); // test to add to goal list P
+                saveToLocalStorage();
             }
         }
-        elapsedTime.appendChild(newEntry);
+        
 
 /*
     /// Training Areas
@@ -176,6 +178,8 @@ function toggleDiv(id) {
       saveToLocalStorage();
     }
 
+
+
   //ChangeScore
     function changeScore(team, value) {
       const scoreElement = document.getElementById(`${team}Score`);
@@ -196,6 +200,8 @@ function toggleDiv(id) {
       saveToLocalStorage();
     }
 	
+
+
 //ActionSelection
 
 	function handleActionSelection() {
@@ -224,12 +230,7 @@ document.getElementById('actionSelect').addEventListener('change', handleActionS
       // Update your UI based on the loaded data
       document.getElementById('homeScore').innerText = homeScore;
       document.getElementById('awayScore').innerText = awayScore;
-
-      // Update goals information in the UI
-      // ...
-
-      // Update other UI elements as needed
-      // ...
+    
     }
 
 
@@ -265,6 +266,8 @@ document.getElementById('actionSelect').addEventListener('change', handleActionS
       alert('Match details copied to clipboard!');
     }
 
+
+
 function formatGoals(goals) {
       return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
     }
@@ -279,6 +282,8 @@ location.reload();
 	
 
 
+
+
 function saveToLocalStorage() {
       localStorage.setItem('homeScore', homeScore.toString());
       localStorage.setItem('awayScore', awayScore.toString());
@@ -287,11 +292,3 @@ function saveToLocalStorage() {
       localStorage.setItem('currentQuarter', currentQuarter.toString());
     }
 
-/* Toggle show& hidea div
-
-    function toggleDiv() {
-    var div = document.getElementById("expandableDiv");
-    div.style.maxHeight = div.style.maxHeight ? null : div.scrollHeight + "px";
-}
-
-   */
