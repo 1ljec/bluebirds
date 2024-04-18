@@ -213,9 +213,9 @@ function trainingAreas() {
         const playerActionDisplay = document.getElementById('playerActionDisplay');
 
         if (selectedPlayer && selectedAction) {
-            const currentTime = homeElapsedTime > awayElapsedTime ? homeElapsedTime : awayElapsedTime;
-            const timeEntry = formatTime(currentTime);
-            playerActionDisplay.innerText = `Player: ${selectedPlayer}, Action: ${selectedAction}, Time: ${timeEntry}`;
+           // const currentTime = homeElapsedTime > awayElapsedTime ? homeElapsedTime : awayElapsedTime;
+           // const timeEntry = formatTime(currentTime);
+            playerActionDisplay.innerText = `${selectedPlayer} ${selectedAction}` //, Time: ${timeEntry}`;
 			saveToLocalStorage();
 			
             // Reset selections
@@ -225,7 +225,6 @@ function trainingAreas() {
 
         }
     }
-document.getElementById('actionSelect').addEventListener('change', handleActionSelection);
  
 
 //UpdateUI

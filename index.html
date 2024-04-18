@@ -70,18 +70,18 @@
   <i class="fas fa-caret-down" > </i></h2>
  
 
-  <div id="expandableDiv1"> <!--class="expandableDiv">-->
-  <div>  <label>Player:</label>
+  <div id="expandableDiv1" class="expandableDiv1">
+  <div><span>  <label>Player:</label></span>
     <select id="playerSelect" class="selectList">
      <option value="">Select...</option>
       <option>Paige</option>  <option>Ella</option> <option>Jenna</option>  <option>Rosie</option><option>Mimi</option><option>Flora</option>                <option>Belle</option>                 <option>Amaya</option> <option>Eliza</option>                 <option>Jodie</option>                <option>Sophia T</option>              <option>Sophia L</option>                 <option>Megs</option>                  <option>Lana</option>                <option>Opposition</option>
   </select>
-</div>
-<div>
-  <label>Action:</label>
+  <div><span><label>Action:</label></span>
   <select id="actionSelect" class="selectList">
       <option value="">Select...</option>                 <option>Won midfield battle</option>                 <option>Won defensive battle</option>                <option>Created chance</option> <option>Ran down wing</option>                <option>Floor save</option>                <option>Standing save</option>                <option>Throw in</option><option>Corner</option>            
   </select>
+  <button onclick="handleActionSelection()">Save</button>
+</div>
     </div>
 
 
@@ -90,6 +90,7 @@
     <div><button class="generalButton" onclick="addNotes()">Add</button>
 <div>
       <span>Notes: <div id="matchNotes"></div></span>
+      <div id="playerActionDisplay"></div>
 </div>    
   </div>
   </div>
@@ -116,10 +117,10 @@
   <h2> <i class="fas fa-trophy"></i><span style="padding: 10px;">Awards / Support</span> <i class="fas fa-caret-down" onclick="toggleDiv('expandableDiv3')"> </i></h2>
   
   <div id="expandableDiv3" class="expandableDiv">
-      <!-- Content inside the expandable div 3 -->
-            <div>Players Player:</div>       <div>Choaches Player:</div>      <div>Player of Steel:</div>      <div>Referee:</div>
-      <div><p></p></div>
-      <div>Livetext updates:</div>      <div>Setup/Packaway:</div>
+    <div>Players Player:</div>       <div>Choaches Player:</div>      <div>Player of Steel:</div>
+      <h3> </h3>
+    
+      <div>Referee:</div>  <div>Livetext updates:</div>      <div>Setup/Packaway:</div>
   </div>
 </div>
 

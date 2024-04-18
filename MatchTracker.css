@@ -16,17 +16,25 @@ body {
       background-color: #007BFF
       
     }
+label {
+text-align: left;
 
+}
     #timer {
 
   font-weight: bold; /* Make the text bold */
 	background-color:black;
 	font-family: 'Courier New', monospace; 
 	color:limegreen;
-	font-size: 6em;
+	font-size: 7em;
     }
 	
 h2 {
+  background-color:blue;
+  color: white;
+}
+
+h3 {
   background-color:blue;
   color: white;
 }
@@ -76,7 +84,7 @@ h2 {
       background-color:Red;
       color:white;
       border: none;
-      font-size: 14px;
+      font-size: 15px;
     
     }
 	
@@ -84,7 +92,7 @@ h2 {
 	 background-color:Green;
       color: #FFFFFF;
       border: none;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
     }
 	
@@ -130,3 +138,9 @@ h2 {
         overflow: hidden;
         transition: max-height 0.3s ease; /* Add transition for smooth animation */
     }
+
+    .expandableDiv1 {
+      
+      display:NONE;
+      transition: max-height 0.3s ease; /* Add transition for smooth animation */
+  }
