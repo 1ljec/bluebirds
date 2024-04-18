@@ -10,7 +10,7 @@ body {
       font-size: 14px;
       color: #FFFFFF;
       padding: 10px;
-      margin: 10px;
+      margin: 5px;
       cursor: pointer;
       border-radius: 12px;
       background-color: #007BFF
@@ -19,12 +19,11 @@ body {
 
     #timer {
 
-      font-weight: bold; /* Make the text bold */
+  font-weight: bold; /* Make the text bold */
 	background-color:black;
 	font-family: 'Courier New', monospace; 
 	color:limegreen;
 	font-size: 6em;
-  /*position: fixed;*/
     }
 	
 h2 {
@@ -36,17 +35,21 @@ h2 {
     #hidden {
       display: none;
     }
+    
+    .hiddenButton {
+      display: none;
+    }
 	
 	    .column {
       display: inline-block;
       vertical-align: top;
-      width: 43%;
-      margin-right: 8px;
+      width: 46%;
+      margin-right: 2px;
     }
 
     .column p {
       text-align: left;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: normal; /* Not bold */
     }
 
@@ -59,100 +62,36 @@ h2 {
       font-weight: bold; 
     }
 
-    #shareButton {
+    .generalButton {
       background-color: #007BFF;
       color: #FFFFFF;
       border: none;
-      padding: 10px;
       font-size: 10px;
       cursor: pointer;
     }
+		
 	
-	 #clearLocalStorageButton {
-      background-color: #007BFF;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 10px;
-      cursor: pointer;
-    }
-
- #up-down-Button {
-      background-color: #007BFF;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 4px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	
-	#upButtonHome {
-	display:none;
-      background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-
-	#upButtonAway {
-	display:none;
-      background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	
-	#downButtonHome {
+	.downButton {
 		
       background-color:Red;
       color:white;
       border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-	#downButtonAway {
-      background-color:Red;
-      color:white;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      
+      font-size: 14px;
       cursor: pointer;
       border-radius: 12px;
     }
 	
-	 #goalButtonAway {
+	 .goalButton {
 	 background-color:Green;
       color: #FFFFFF;
       border: none;
-      padding: 0px;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       cursor: pointer;
       border-radius: 12px;
       
     }
 	
-	 #goalButtonHome {
-	 background-color:Green;
-      color: #FFFFFF;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 12px;
-    
-    }
 	
 
 #playerSelect {
