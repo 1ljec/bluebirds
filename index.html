@@ -32,22 +32,25 @@
 
 <!--Home & Opposition Columns -->
   <div class="column" id="homeColumn">
-    <h2>Bluebirds <span id="homeScore" class="score-counter"><br>0</span></h2>
+    <h2>Bluebirds <span id="homeScore" class="score-counter">0</span></h2>
+    
+
       <div class="team-buttons">
-    <button id="goalButtonHome" onclick="recordGoal('home')">Goal</button>
-    <button id="upButtonHome" onclick="changeScore('home', 1)">GoalHidden</button>
-    <button id="downButtonHome" onclick="changeScore('home', -1)">-Goal</button>
-  </div>
+        <button id="goalButtonHome" onclick="recordGoal('home')">Goal</button>
+        <button id="upButtonHome" onclick="changeScore('home', 1)">GoalHidden</button>
+        <button id="downButtonHome" onclick="changeScore('home', -1)">-Goal</button>
+      </div>
     <p id="homeElapsedTime"></p>
+  
   </div>
 
   <div class="column" id="awayColumn">
     <h2>Opposition <span id="awayScore" class="score-counter">0</span></h2>
     <div class="team-buttons">
-     <span> <button id="goalButtonAway" onclick="recordGoal('away')">Goal</button>
-      <button id="upButtonAway" onclick="changeScore('away', 1)">GoalHidden</button>
-      <button id="downButtonAway" onclick="changeScore('away', -1)">-Goal</button>
-    </span>
+      <span> <button id="goalButtonAway" onclick="recordGoal('away')">Goal</button>
+        <button id="upButtonAway" onclick="changeScore('away', 1)">GoalHidden</button>
+        <button id="downButtonAway" onclick="changeScore('away', -1)">-Goal</button>
+      </span>
     </div>
     <p id="awayElapsedTime"></p>
   </div>
@@ -56,21 +59,38 @@
 <div></div>
 
 
+
+
 <!-- Accordian Divs test-->
-<!--GENERAL NOTES-->
+<!--MATCH NOTES-->
 
 <div class="accordion"> 
 <h2> <i class="fa fa-file-text-o"></i> 
-  <span style="padding: 10px;">General Notes </span>  
-  <i class="fas fa-caret-down" onclick="toggleDiv('expandableDiv1')"> </i></h2>
+  <span style="padding: 10px;">Match Notes </span>  
+  <i class="fas fa-caret-down" onclick="showNotes()"> </i></h2>
  
 
-  <div id="expandableDiv1" class="expandableDiv">
+  <div id="expandableDiv1"> <!--class="expandableDiv">-->
+  <div>  <label>Player:</label>
+    <select id="playerSelect">
+     <option value="">Select...</option>
+      <option>Paige</option>                 <option>Ella</option>                 <option>Jenna</option>                 <option>Rosie</option>                 <option>Mimi</option>                  <option>Flora</option>                <option>Belle</option>                 <option>Amaya</option> <option>Eliza</option>                 <option>Jodie</option>                <option>Sophia T</option>              <option>Sophia L</option>                 <option>Megs</option>                  <option>Lana</option>                <option>Opposition</option>
+  </select>
+</div>
+<div>
+  <label>Action:</label>
+  <select id="actionSelect">
+      <option value="">Select...</option>                 <option>Won midfield battle</option>                 <option>Won defensive battle</option>                <option>Created chance</option> <option>Ran down wing</option>                <option>Floor save</option>                <option>Standing save</option>                <option>Throw in</option>
+      <option>Corner</option>            </select>
+    </div>
+
+
       <!-- Content inside the expandable div 1 -->
     <textarea id="notesInput" rows="4" cols="50"></textarea>
     <div><button onclick="addNotes()">Add</button>
 
-    <span><div id="homeScores"></div></span>
+      <span>Notes: <div id="matchNotes"></div></span>
+    
   </div>
   </div>
 
@@ -86,7 +106,7 @@
     </select>
     <button onclick="trainingAreas()">Add</button>
 
-    <div id=""></div>
+    <div id="trainingAreas"></div>
   </div>
   
 
@@ -114,23 +134,8 @@
 
 
 
-<!-- <div style="margin-top: 20px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid white; border-bottom: 1px solid white;">
-        <div id="pageSeparatorContent">
-            <select id="playerSelect">
-                <option value="">Select Player</option>
-                <option>Paige</option>                 <option>Ella</option>                 <option>Jenna</option>                 <option>Rosie</option>                 <option>Mimi</option>                  <option>Flora</option>                <option>Belle</option>                 <option>Amaya</option> <option>Eliza</option>                 <option>Jodie</option>                <option>Sophia T</option>              <option>Sophia L</option>                 <option>Megs</option>                  <option>Lana</option>                <option>Opposition</option>
-            </select>
-            <select id="actionSelect">
-                <option value="">Select Action</option>                 <option>Won midfield battle</option>                 <option>Won defensive battle</option>                <option>Created chance</option> <option>Ran down wing</option>                <option>Floor save</option>                <option>Standing save</option>                <option>Throw in</option>
-                <option>Corner</option>            </select>
-        </div>
 	
-<div id="playerActionDisplay"></div>
- <label for="personSelect">Select a person:</label>
-    <select id="personSelect">
-        <option value="">Select Person</option>         <option value="person1">Person 1</option>         <option value="person2">Person 2</option>        <option value="person3">Person 3</option>
-    </select>
-    <div id="personDisplay"></div>-->
+
 
 
    

@@ -9,7 +9,6 @@
     let awayGoals = [];
     let currentQuarter = 1;
 
-let show15MinuteButton = true; // Initial state
 
 
     // Load data from local storage on page load
@@ -36,41 +35,8 @@ function toggleDiv(id) {
 }
 
 
+//Load data from local storage if page refreshed for exmaple
 
-
-    // General Notes script to review
-    function addNotes() {
-            const notesInput = document.getElementById('notesInput');
-            const notes = notesInput.value.trim();
-            
-            if (notes) {
-                const homeScores = document.getElementById('homeScores');
-                const newEntry = document.createElement('div');
-                newEntry.textContent = notes;
-                homeScores.appendChild(newEntry);
-                notesInput.value = ''; // Clear the input field after adding notes
-                elapsedTime.appendChild(newEntry); // test to add to goal list P
-                saveToLocalStorage();
-            }
-        }
-        
-
-/*
-    /// Training Areas
-    function trainingAreas() {
-            const trainingAreaSelect = document.getElementById('trainingAreaSelect');
-            const selectedTrainingArea = trainingAreaSelect.value;
-
-            if (selectedTrainingArea) {
-                const homeScores = document.getElementById('homeScores');
-                const newEntry = document.createElement('div');
-                newEntry.textContent = selectedTrainingArea;
-                homeScores.appendChild(newEntry);
-            }
-        }
-        }
-
-*/
     function loadFromLocalStorage() {
       const storedHomeScore = localStorage.getItem('homeScore');
       const storedAwayScore = localStorage.getItem('awayScore');
@@ -124,9 +90,10 @@ function toggleDiv(id) {
           } else {
             const minutesElapsed = Math.floor(elapsedMillis / (1000 * 60));
             const secondsElapsed = Math.floor((elapsedMillis % (1000 * 60)) / 1000);
-            
+            const secondsElapsedAsString = secondsElapsed < 10 ? "0" + secondsElapsed: secondsElapsed;
+                        
             document.getElementById('timerContainer').classList.remove('hidden');
-            document.getElementById('timer').innerHTML = `${minutesElapsed}:${secondsElapsed}`;
+            document.getElementById('timer').innerHTML = `${minutesElapsed}:${secondsElapsedAsString}`;
           }
         }
       }, 1000);
@@ -179,6 +146,23 @@ function toggleDiv(id) {
     }
 
 
+     // General Notes script to review
+     function addNotes() {
+            const notesInput = document.getElementById('notesInput');
+           const notes = notesInput.value.trim();
+            
+            if (notes)  {
+                const matchNotes = document.getElementById('matchNotes');
+                const newEntry = document.createElement('div');
+                newEntry.textContent = notes;
+                matchNotes.appendChild(newEntry);
+                notesInput.value = ''; // Clear the input field after adding notes
+                         }
+     saveToLocalStorage();
+    }
+        
+
+
 
   //ChangeScore
     function changeScore(team, value) {
@@ -199,6 +183,25 @@ function toggleDiv(id) {
       // Save data to local storage
       saveToLocalStorage();
     }
+
+
+
+
+
+
+/// Training Areas
+function trainingAreas() {
+        const trainingAreaSelect = document.getElementById('trainingAreaSelect');
+        const selectedTrainingArea = trainingAreaSelect.value;
+
+        if (selectedTrainingArea) {
+            const trainingAreas = document.getElementById('trainingAreas');
+            const newEntry = document.createElement('div');
+            newEntry.textContent = selectedTrainingArea;
+            trainingAreas.appendChild(newEntry);
+        }
+    }
+    
 	
 
 
@@ -252,9 +255,10 @@ document.getElementById('actionSelect').addEventListener('change', handleActionS
 
         Opposition Score: ${awayScore}
         Goals: ${formatGoals(awayGoals)}
-        General Notes: ${homeScores}
+        General Notes: ${matchNotes}
 		    
         Date & Time: ${getCurrentDateTime()}`;
+        
 
       const textarea = document.createElement('textarea');
       textarea.value = matchDetails;
@@ -292,3 +296,21 @@ function saveToLocalStorage() {
       localStorage.setItem('currentQuarter', currentQuarter.toString());
     }
 
+
+
+    function showNotes()    {
+    //document.getElementById("expandableDiv1").style.display ='block';
+
+    var x = document.getElementById('expandableDiv1');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';}
+
+    }
+
+
+
+    function hideNotes(){
+    document.getElementById("expandableDiv1").style.display ='none';
+}
