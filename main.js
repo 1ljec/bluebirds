@@ -75,11 +75,11 @@ function toggleDiv(id) {
           const elapsedMillis = currentTime - startTime;
 
           if (elapsedMillis >= minutes * 60 * 1000) {
-            clearInterval(countdown);
-            
             if ("vibrate" in navigator) {
                 navigator.vibrate(2000);
             }
+
+            clearInterval(countdown);
             alert("End of quarter");
             document.getElementById('timerContainer').classList.add('hidden');
             document.getElementById('goalButtonHome').setAttribute('disabled', true);
