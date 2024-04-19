@@ -144,3 +144,11 @@ h3 {
       display:NONE;
       transition: max-height 0.3s ease; /* Add transition for smooth animation */
   }
+
+  .expandableDiv4 {
+      
+    display:NONE;
+    transition: max-height 0.3s ease; /* Add transition for smooth animation */
+}
+
+

@@ -53,6 +53,8 @@ function toggleDiv(id) {
       updateUI();
     }
 
+//START TIMER
+
     function startTimer(minutes) {
       clearInterval(countdown); // Clear any existing countdown
 
@@ -145,6 +147,26 @@ function toggleDiv(id) {
       saveToLocalStorage();
     }
 
+      //ChangeScore
+      function changeScore(team, value) {
+        const scoreElement = document.getElementById(`${team}Score`);
+        const currentScore = parseInt(scoreElement.innerText);
+        scoreElement.innerText = currentScore + value;
+  
+        const elapsedMillis = new Date().getTime() - startTime;
+        const minutesElapsed = Math.floor(elapsedMillis / (1000 * 60));
+        const secondsElapsed = Math.floor((elapsedMillis % (1000 * 60)) / 1000);
+  
+        const elapsedTimeColumn = team === 'home' ? 'homeElapsedTime' : 'awayElapsedTime';
+        const elapsedTime = document.getElementById(elapsedTimeColumn);
+        const timeEntry = document.createElement('p');
+        timeEntry.innerText = `Goal Disallowed at ${minutesElapsed}m ${secondsElapsed}s - Q ${currentQuarter}`;
+        elapsedTime.appendChild(timeEntry);
+  
+        // Save data to local storage
+        saveToLocalStorage();
+      }
+
 
      // General Notes script to review
      function addNotes() {
@@ -160,71 +182,85 @@ function toggleDiv(id) {
                          }
      saveToLocalStorage();
     }
+
+     //PLAYER ACTIONS---------------   
+     function savePlayerAction() {
+        const playerSelect = document.getElementById('playerSelect');
+        const actionSelect = document.getElementById('actionSelect');
+        const player = playerSelect.value;
+        const action = actionSelect.value;
         
-
-
-
-  //ChangeScore
-    function changeScore(team, value) {
-      const scoreElement = document.getElementById(`${team}Score`);
-      const currentScore = parseInt(scoreElement.innerText);
-      scoreElement.innerText = currentScore + value;
-
-      const elapsedMillis = new Date().getTime() - startTime;
-      const minutesElapsed = Math.floor(elapsedMillis / (1000 * 60));
-      const secondsElapsed = Math.floor((elapsedMillis % (1000 * 60)) / 1000);
-
-      const elapsedTimeColumn = team === 'home' ? 'homeElapsedTime' : 'awayElapsedTime';
-      const elapsedTime = document.getElementById(elapsedTimeColumn);
-      const timeEntry = document.createElement('p');
-      timeEntry.innerText = `Goal Disallowed at ${minutesElapsed}m ${secondsElapsed}s - Q ${currentQuarter}`;
-      elapsedTime.appendChild(timeEntry);
-
-      // Save data to local storage
-      saveToLocalStorage();
-    }
-
-
-
-
-
-
-/// Training Areas
-function trainingAreas() {
-        const trainingAreaSelect = document.getElementById('trainingAreaSelect');
-        const selectedTrainingArea = trainingAreaSelect.value;
-
-        if (selectedTrainingArea) {
-            const trainingAreas = document.getElementById('trainingAreas');
-            const newEntry = document.createElement('div');
-            newEntry.textContent = selectedTrainingArea;
-            trainingAreas.appendChild(newEntry);
+        if (player && action) {
+            updateSelection(player, action);
+            // Reset selected options
+            playerSelect.value = '';
+            actionSelect.value = '';
+        } else {
+            alert('Please select both a player and an action.');
         }
     }
     
-	
+    // Function to update the selections div
+    function updateSelection(player, action) {
+        const selectionsDiv = document.getElementById('selections');
+        const selectionText = document.createTextNode(player + ' - ' + action);
+        const br = document.createElement('br');
+        selectionsDiv.appendChild(selectionText);
+        selectionsDiv.appendChild(br);
+    }
+    
 
-
-//ActionSelection
-
-	function handleActionSelection() {
-        const selectedPlayer = document.getElementById('playerSelect').value;
-        const selectedAction = document.getElementById('actionSelect').value;
-        const playerActionDisplay = document.getElementById('playerActionDisplay');
-
-        if (selectedPlayer && selectedAction) {
-           // const currentTime = homeElapsedTime > awayElapsedTime ? homeElapsedTime : awayElapsedTime;
-           // const timeEntry = formatTime(currentTime);
-            playerActionDisplay.innerText = `${selectedPlayer} ${selectedAction}` //, Time: ${timeEntry}`;
-			saveToLocalStorage();
-			
-            // Reset selections
-            document.getElementById('playerSelect').value = '';
-            document.getElementById('actionSelect').value = '';
-		    document.getElementById('actionSelect').addEventListener('change', handleActionSelection);
-
+    function sharePlayerActions() {
+        const selectionsDiv = document.getElementById('selections');
+        const clipboardText = selectionsDiv.textContent.trim();
+        
+        if (clipboardText !== '') {
+            navigator.clipboard.writeText(clipboardText)
+                .then(() => {
+                    console.log('Player actions copied to clipboard:', clipboardText);
+                    alert('Player actions copied to clipboard');
+                })
+                .catch((error) => {
+                    console.error('Error copying player actions to clipboard:', error);
+                    alert('Error copying player actions to clipboard');
+                });
+        } else {
+            alert('No player actions to share.');
         }
     }
+    
+        
+    
+
+
+
+    /// Training Areas
+    function saveTraining() {
+        const trainingAreaSelect = document.getElementById('trainingAreaSelect');
+        const selectedOption = trainingAreaSelect.value;
+        
+        if (selectedOption !== '') {
+            const trainingAreasDiv = document.getElementById('trainingAreas');
+            const newTrainingArea = document.createElement('div');
+            newTrainingArea.textContent = selectedOption;
+            trainingAreasDiv.appendChild(newTrainingArea);
+        } else {
+            alert('Please select a training area.');
+        }
+    }
+    
+
+
+
+
+function saveReferee() {
+    const selectedReferee = document.getElementById('selectedReferee');
+    const refereeName = document.createElement('p')
+
+refereeName.innerText
+
+                 }
+
  
 
 //UpdateUI
@@ -255,7 +291,7 @@ function trainingAreas() {
         Opposition Score: ${awayScore}
         Goals: ${formatGoals(awayGoals)}
         General Notes: ${matchNotes}
-		    
+        Player Actions:${selectionsDiv.join('\n')}
         Date & Time: ${getCurrentDateTime()}`;
         
 
@@ -274,6 +310,10 @@ function trainingAreas() {
 function formatGoals(goals) {
       return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
     }
+
+    function formatNotes(notes) {
+        return notes.map;
+      }
 
 
 //Reset local data / clear local storage
@@ -296,6 +336,8 @@ function saveToLocalStorage() {
     }
 
 
+   
+
 
     function showNotes()    {
     //document.getElementById("expandableDiv1").style.display ='block';
@@ -313,3 +355,64 @@ function saveToLocalStorage() {
     function hideNotes(){
     document.getElementById("expandableDiv1").style.display ='none';
 }
+
+
+function showFooter()    {
+    //document.getElementById("expandableDiv1").style.display ='block';
+
+  
+
+    var x = document.getElementById('expandableDiv4');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';}
+
+    }
+
+    
+
+    function hideFooter(){
+    document.getElementById("expandableDiv4").style.display ='none';
+}
+
+
+
+
+
+function saveAwards() {
+    const awardsDiv = document.getElementById('awards');
+    awardsDiv.innerHTML = ''; // Clear previous entries
+
+    const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
+    awardSelects.forEach((select, index) => {
+        if (select.value !== '') {
+            const awardText = document.createTextNode(select.value);
+            const br = document.createElement('br');
+            awardsDiv.appendChild(awardText);
+            awardsDiv.appendChild(br);
+        }
+    });
+}
+
+function shareAwards() {
+    const awardsDiv = document.getElementById('awards');
+    const clipboardText = awardsDiv.textContent.trim();
+    
+    if (clipboardText !== '') {
+        navigator.clipboard.writeText(clipboardText)
+            .then(() => {
+                console.log('Awards copied to clipboard:', clipboardText);
+                alert('Awards copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Error copying awards to clipboard:', error);
+                alert('Error copying awards to clipboard');
+            });
+    } else {
+        alert('No awards to share.');
+    }
+}
+
+
+
