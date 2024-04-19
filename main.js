@@ -76,6 +76,10 @@ function toggleDiv(id) {
 
           if (elapsedMillis >= minutes * 60 * 1000) {
             clearInterval(countdown);
+            
+            if ("vibrate" in navigator) {
+                navigator.vibrate(200);
+            }
             alert("End of quarter");
             document.getElementById('timerContainer').classList.add('hidden');
             document.getElementById('goalButtonHome').setAttribute('disabled', true);
@@ -140,7 +144,7 @@ function toggleDiv(id) {
       const elapsedTimeColumn = team === 'home' ? 'homeElapsedTime' : 'awayElapsedTime';
       const elapsedTime = document.getElementById(elapsedTimeColumn);
       const timeEntry = document.createElement('p');
-      timeEntry.innerText = `${team.charAt(0).toUpperCase() + team.slice(1)} goal at ${minutesElapsed}m ${secondsElapsed}s - Q${currentQuarter}`;
+      timeEntry.innerText = `${team.charAt(0).toUpperCase() + team.slice(1)} goal at ${minutesElapsed}m ${secondsElapsed}s - Q${currentQuarter} +'\n'`;
       elapsedTime.appendChild(timeEntry);
 
       // Save data to local storage
@@ -176,7 +180,7 @@ function toggleDiv(id) {
             if (notes)  {
                 const matchNotes = document.getElementById('matchNotes');
                 const newEntry = document.createElement('div');
-                newEntry.textContent = notes;
+                newEntry.textContent = notes + ' Q' + currentQuarter;
                 matchNotes.appendChild(newEntry);
                 notesInput.value = ''; // Clear the input field after adding notes
                          }
@@ -203,7 +207,7 @@ function toggleDiv(id) {
     // Function to update the selections div
     function updateSelection(player, action) {
         const selectionsDiv = document.getElementById('selections');
-        const selectionText = document.createTextNode(player + ' - ' + action);
+        const selectionText = document.createTextNode(player + ' - ' + action + ' Q' + currentQuarter);
         const br = document.createElement('br');
         selectionsDiv.appendChild(selectionText);
         selectionsDiv.appendChild(br);
