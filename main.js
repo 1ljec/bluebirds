@@ -144,7 +144,7 @@ function toggleDiv(id) {
       const elapsedTimeColumn = team === 'home' ? 'homeElapsedTime' : 'awayElapsedTime';
       const elapsedTime = document.getElementById(elapsedTimeColumn);
       const timeEntry = document.createElement('p');
-      timeEntry.innerText = `${team.charAt(0).toUpperCase() + team.slice(1)} goal at ${minutesElapsed}m ${secondsElapsed}s - Q${currentQuarter} `+ '\n';
+      timeEntry.innerText = `${team.charAt(0).toUpperCase() + team.slice(1)} goal at ${minutesElapsed}m ${secondsElapsed}s - Q${currentQuarter} `+ '\n\n';
       elapsedTime.appendChild(timeEntry);
 
       // Save data to local storage
