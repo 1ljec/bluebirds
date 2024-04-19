@@ -78,7 +78,7 @@ function toggleDiv(id) {
             clearInterval(countdown);
             
             if ("vibrate" in navigator) {
-                navigator.vibrate(200);
+                navigator.vibrate(2000);
             }
             alert("End of quarter");
             document.getElementById('timerContainer').classList.add('hidden');

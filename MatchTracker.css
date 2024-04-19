@@ -79,7 +79,7 @@ h3 {
     }
 	
   #clearLocalStorageButton {
-      background-color: red;
+      background-color: orange;
       color: #FFFFFF;
     }
 	
@@ -106,7 +106,7 @@ h3 {
       color:YELLOW;
       border: none;
       padding: 10px;
-      font-size: 16px;
+      font-size: 18px;
       cursor: pointer;
       
     }
