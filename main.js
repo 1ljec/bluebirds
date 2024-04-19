@@ -187,7 +187,7 @@ function toggleDiv(id) {
      function savePlayerAction() {
         const playerSelect = document.getElementById('playerSelect');
         const actionSelect = document.getElementById('actionSelect');
-        const player = playerSelect.value;
+        const player = '\n' + playerSelect.value;
         const action = actionSelect.value;
         
         if (player && action) {
@@ -250,19 +250,6 @@ function toggleDiv(id) {
     }
     
 
-
-
-
-function saveReferee() {
-    const selectedReferee = document.getElementById('selectedReferee');
-    const refereeName = document.createElement('p')
-
-refereeName.innerText
-
-                 }
-
- 
-
 //UpdateUI
     function updateUI() {
       // Update your UI based on the loaded data
@@ -287,11 +274,8 @@ refereeName.innerText
       const matchDetails = `
         Bluebirds Score: ${homeScore}
         Goals: ${formatGoals(homeGoals)}
-
         Opposition Score: ${awayScore}
         Goals: ${formatGoals(awayGoals)}
-        General Notes: ${matchNotes}
-        Player Actions:${selectionsDiv.join('\n')}
         Date & Time: ${getCurrentDateTime()}`;
         
 
@@ -311,9 +295,6 @@ function formatGoals(goals) {
       return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
     }
 
-    function formatNotes(notes) {
-        return notes.map;
-      }
 
 
 //Reset local data / clear local storage
@@ -324,9 +305,6 @@ location.reload();
     }
 	
 
-
-
-
 function saveToLocalStorage() {
       localStorage.setItem('homeScore', homeScore.toString());
       localStorage.setItem('awayScore', awayScore.toString());
@@ -334,10 +312,6 @@ function saveToLocalStorage() {
       localStorage.setItem('awayGoals', JSON.stringify(awayGoals));
       localStorage.setItem('currentQuarter', currentQuarter.toString());
     }
-
-
-   
-
 
     function showNotes()    {
     //document.getElementById("expandableDiv1").style.display ='block';
@@ -349,9 +323,6 @@ function saveToLocalStorage() {
       x.style.display = 'none';}
 
     }
-
-
-
     function hideNotes(){
     document.getElementById("expandableDiv1").style.display ='none';
 }
@@ -359,41 +330,35 @@ function saveToLocalStorage() {
 
 function showFooter()    {
     //document.getElementById("expandableDiv1").style.display ='block';
-
-  
-
     var x = document.getElementById('expandableDiv4');
     if (x.style.display === 'none') {
       x.style.display = 'block';
     } else {
       x.style.display = 'none';}
-
     }
-
-    
-
     function hideFooter(){
     document.getElementById("expandableDiv4").style.display ='none';
 }
 
 
-
-
-
 function saveAwards() {
     const awardsDiv = document.getElementById('awards');
-    awardsDiv.innerHTML = ''; // Clear previous entries
-
     const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
-    awardSelects.forEach((select, index) => {
-        if (select.value !== '') {
-            const awardText = document.createTextNode(select.value);
+    
+    awardSelects.forEach((select) => {
+        const selectedOption = select.value;
+        const selectId = select.id;
+        
+        if (selectedOption !== '') {
+            const awardText = document.createTextNode(` ${selectId}: ${selectedOption} \n`);
             const br = document.createElement('br');
             awardsDiv.appendChild(awardText);
             awardsDiv.appendChild(br);
         }
     });
 }
+
+
 
 function shareAwards() {
     const awardsDiv = document.getElementById('awards');
@@ -415,4 +380,37 @@ function shareAwards() {
 }
 
 
+function saveAndShare() {
+    const awardsDiv = document.getElementById('awards');
+    const trainingAreasDiv = document.getElementById('trainingAreas');
+    const selections = document.getElementById('selections');
+    const matchNotes = document.getElementById('matchNotes');
+    const homeElapsedTime = document.getElementById('homeElapsedTime');
+    const awayElapsedTime = document.getElementById('awayElapsedTime');
+    const homeScore = document.getElementById('homeScore');
+    const awayScore = document.getElementById('awayScore');
+    
+    // Concatenate all entries from awards and trainingAreas divs
+    const clipboardText =   'Bluebirds '            + homeScore.textContent.trim() + ' - ' +awayScore.textContent.trim() + ' Opposition' + '\n\n' + 
+                            'Bluebirds Goals: '     + homeElapsedTime.textContent.trim() + '\n\n' + 
+                            'Opposition Goals: '    + awayElapsedTime.textContent.trim() + '\n\n' + 
+                            'Player Notes: '        + '\n' + selections.textContent.trim() + '\n\n' + 
+                            'Manual Notes: '        + '\n' + matchNotes.textContent.trim() + '\n\n' +  
+                            'Training Areas: '      + '\n' + trainingAreasDiv.textContent.trim() + '\n\n' +
+                            'Awards: '              + '\n' + awardsDiv.textContent.trim() + '\n\n' ;
+    
+    if (clipboardText !== '') {
+        navigator.clipboard.writeText(clipboardText)
+            .then(() => {
+                console.log('Data copied to clipboard:', clipboardText);
+                alert('Data copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Error copying data to clipboard:', error);
+                alert('Error copying data to clipboard');
+            });
+    } else {
+        alert('No data to share.');
+    }
+}
 
