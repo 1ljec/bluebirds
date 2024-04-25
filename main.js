@@ -178,9 +178,10 @@ function toggleDiv(id) {
            const notes = notesInput.value.trim();
             
             if (notes)  {
-                const matchNotes = document.getElementById('matchNotes');
+            // original output div    const matchNotes = document.getElementById('matchNotes');
+                const matchNotes = document.getElementById('selections');  //testing combining manual notes & selections notes
                 const newEntry = document.createElement('div');
-                newEntry.textContent = notes + ' Q' + currentQuarter;
+                newEntry.textContent = 'Q' + currentQuarter +  ' ' + notes;
                 matchNotes.appendChild(newEntry);
                 notesInput.value = ''; // Clear the input field after adding notes
                          }
@@ -204,40 +205,17 @@ function toggleDiv(id) {
         }
     }
     
-    // Function to update the selections div
+    // Function to save & update the selections div
     function updateSelection(player, action) {
         const selectionsDiv = document.getElementById('selections');
-        const selectionText = document.createTextNode(player + ' - ' + action + ' Q' + currentQuarter);
+        const selectionText = document.createTextNode('Q' +currentQuarter + player + ' - ' + action + '\n');
         const br = document.createElement('br');
         selectionsDiv.appendChild(selectionText);
         selectionsDiv.appendChild(br);
     }
     
-
-    function sharePlayerActions() {
-        const selectionsDiv = document.getElementById('selections');
-        const clipboardText = selectionsDiv.textContent.trim();
-        
-        if (clipboardText !== '') {
-            navigator.clipboard.writeText(clipboardText)
-                .then(() => {
-                    console.log('Player actions copied to clipboard:', clipboardText);
-                    alert('Player actions copied to clipboard');
-                })
-                .catch((error) => {
-                    console.error('Error copying player actions to clipboard:', error);
-                    alert('Error copying player actions to clipboard');
-                });
-        } else {
-            alert('No player actions to share.');
-        }
-    }
+      
     
-        
-    
-
-
-
     /// Training Areas
     function saveTraining() {
         const trainingAreaSelect = document.getElementById('trainingAreaSelect');
@@ -271,36 +249,6 @@ function toggleDiv(id) {
       return `${date} ${time}`;
     }
 
-
-  //Copy to Clipboard
-
- function copyToClipboard() {
-      const matchDetails = `
-        Bluebirds Score: ${homeScore}
-        Goals: ${formatGoals(homeGoals)}
-        Opposition Score: ${awayScore}
-        Goals: ${formatGoals(awayGoals)}
-        Date & Time: ${getCurrentDateTime()}`;
-        
-
-      const textarea = document.createElement('textarea');
-      textarea.value = matchDetails;
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textarea);
-
-      alert('Match details copied to clipboard!');
-    }
-
-
-
-function formatGoals(goals) {
-      return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
-    }
-
-
-
 //Reset local data / clear local storage
 function clearLocalStorage() {
       localStorage.clear();
@@ -315,6 +263,8 @@ function saveToLocalStorage() {
       localStorage.setItem('homeGoals', JSON.stringify(homeGoals));
       localStorage.setItem('awayGoals', JSON.stringify(awayGoals));
       localStorage.setItem('currentQuarter', currentQuarter.toString());
+      localStorage.setItem('selections', JSON.stringify(homeGoals));
+    
     }
 
     function showNotes()    {
@@ -345,44 +295,18 @@ function showFooter()    {
 }
 
 
-function saveAwards() {
-    const awardsDiv = document.getElementById('awards');
-    const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
-    
-    awardSelects.forEach((select) => {
-        const selectedOption = select.value;
-        const selectId = select.id;
-        
-        if (selectedOption !== '') {
-            const awardText = document.createTextNode(` ${selectId}: ${selectedOption} \n`);
-            const br = document.createElement('br');
-            awardsDiv.appendChild(awardText);
-            awardsDiv.appendChild(br);
-        }
-    });
-}
 
-
-
-function shareAwards() {
-    const awardsDiv = document.getElementById('awards');
-    const clipboardText = awardsDiv.textContent.trim();
-    
-    if (clipboardText !== '') {
-        navigator.clipboard.writeText(clipboardText)
-            .then(() => {
-                console.log('Awards copied to clipboard:', clipboardText);
-                alert('Awards copied to clipboard');
-            })
-            .catch((error) => {
-                console.error('Error copying awards to clipboard:', error);
-                alert('Error copying awards to clipboard');
-            });
+function showFormations()    {
+    //document.getElementById("expandableDiv1").style.display ='block';
+    var x = document.getElementById('expandableDiv5');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
     } else {
-        alert('No awards to share.');
+      x.style.display = 'none';}
     }
+    function hideFormations(){
+    document.getElementById("expandableDiv5").style.display ='none';
 }
-
 
 function saveAndShare() {
     const awardsDiv = document.getElementById('awards');
@@ -398,8 +322,9 @@ function saveAndShare() {
     const clipboardText =   'Bluebirds '            + homeScore.textContent.trim() + ' - ' +awayScore.textContent.trim() + ' Opposition' + '\n\n' + 
                             'Bluebirds Goals: '     + homeElapsedTime.textContent.trim() + '\n\n' + 
                             'Opposition Goals: '    + awayElapsedTime.textContent.trim() + '\n\n' + 
-                            'Player Notes: '        + '\n' + selections.textContent.trim() + '\n\n' + 
-                            'Manual Notes: '        + '\n' + matchNotes.textContent.trim() + '\n\n' +  
+                            // original notes separated 'Player Notes: '        + '\n' + selections.textContent.trim() + '\n\n' + 
+                            'Game Notes: '        + '\n' + selections.textContent.trim() + '\n\n' + 
+                           // 'Manual Notes: '        + '\n' + matchNotes.textContent.trim() + '\n\n' +  
                             'Training Areas: '      + '\n' + trainingAreasDiv.textContent.trim() + '\n\n' +
                             'Awards: '              + '\n' + awardsDiv.textContent.trim() + '\n\n' ;
     
@@ -418,3 +343,178 @@ function saveAndShare() {
     }
 }
 
+
+//TEST FUNCTION FOR CUSTOM MODAL VIBRATE
+
+// Function to trigger end of quarter alert
+function endOfQuarterAlert() {
+  // Vibrate before showing the modal
+  if ("vibrate" in navigator) {
+      navigator.vibrate(200);
+  }
+  // Show the modal
+  const modal = document.getElementById("myModal");
+  modal.style.display = "block";
+}
+
+// Close the modal when the user clicks on <span> (x)
+document.getElementsByClassName("close")[0].onclick = function() {
+document.getElementById("myModal").style.display = "none";
+}
+
+// Close the modal when the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+const modal = document.getElementById("myModal");
+if (event.target == modal) {
+  modal.style.display = "none";
+}
+}
+
+//ENF OF TEST MODAL FOR VIBRATION TEST
+
+
+
+//TODO TIDY / DELETE?
+
+/*
+    function sharePlayerActions() {
+        const selectionsDiv = document.getElementById('selections');
+        const clipboardText = selectionsDiv.textContent.trim();
+        
+        if (clipboardText !== '') {
+            navigator.clipboard.writeText(clipboardText)
+                .then(() => {
+                    console.log('Player actions copied to clipboard:', clipboardText);
+                    alert('Player actions copied to clipboard');
+                })
+                .catch((error) => {
+                    console.error('Error copying player actions to clipboard:', error);
+                    alert('Error copying player actions to clipboard');
+                });
+        } else {
+            alert('No player actions to share.');
+        }
+    }
+    */
+
+
+    
+/*
+function shareAwards() {
+    const awardsDiv = document.getElementById('awards');
+    const clipboardText = awardsDiv.textContent.trim();
+    
+    if (clipboardText !== '') {
+        navigator.clipboard.writeText(clipboardText)
+            .then(() => {
+                console.log('Awards copied to clipboard:', clipboardText);
+                alert('Awards copied to clipboard');
+            })
+            .catch((error) => {
+                console.error('Error copying awards to clipboard:', error);
+                alert('Error copying awards to clipboard');
+            });
+    } else {
+        alert('No awards to share.');
+    }
+}
+*/
+
+
+/*
+function saveAwards() {
+    const awardsDiv = document.getElementById('awards');
+    const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
+    
+    awardSelects.forEach((select) => {
+        const selectedOption = select.value;
+        const selectId = select.id;
+        
+        if (selectedOption !== '') {
+            const awardText = document.createTextNode(` ${selectId}: ${selectedOption} \n`);
+            const br = document.createElement('br');
+            awardsDiv.appendChild(awardText);
+            awardsDiv.appendChild(br);
+        }
+    });
+}
+
+*/
+
+
+
+  //Copy to Clipboard
+/*
+ function copyToClipboard() {
+      const matchDetails = `
+        Bluebirds Score: ${homeScore}
+        Goals: ${formatGoals(homeGoals)}
+        Opposition Score: ${awayScore}
+        Goals: ${formatGoals(awayGoals)}
+        Date & Time: ${getCurrentDateTime()}`;
+        
+
+      const textarea = document.createElement('textarea');
+      textarea.value = matchDetails;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      alert('Match details copied to clipboard!');
+    }
+*/
+
+/*
+function formatGoals(goals) {
+      return goals.map(goal => `(${goal.quarter}Q - ${goal.time})`).join(', ');
+    }
+*/
+
+//Todo - allow goal in extra time script below
+
+
+/*
+let timerCompleted = false;
+let currentTime = 0;
+
+// Function to start the timer
+function startTimer(minutes) {
+    let seconds = minutes * 60;
+    let timerInterval = setInterval(() => {
+        currentTime++;
+        seconds--;
+
+        // Check if timer is completed
+        if (seconds <= 0) {
+            clearInterval(timerInterval);
+            timerCompleted = true;
+            alert("End of quarter (extra time)");
+        }
+    }, 1000);
+}
+
+// Function to record a goal
+function recordGoal(team) {
+    if (timerCompleted) {
+        console.log("Goal recorded during extra time for " + team + " team at " + currentTime + " minutes");
+    } else {
+        console.log("Goal recorded for " + team + " team at " + currentTime + " minutes");
+    }
+}
+
+// Example usage
+startTimer(1); // Start a 1-minute timer
+
+// Simulate recording a goal after the timer completes
+setTimeout(() => {
+    recordGoal("Home"); // Record a goal after the timer completes
+}, 1500); // Simulating 1.5 seconds after the timer completes
+In this example:
+
+We introduce a timerCompleted variable to keep track of whether the timer has completed or not.
+When a goal is recorded, we check if the timer has completed (timerCompleted is true). If it has completed, we label the time as "extra time."
+Otherwise, the time is labeled as the current elapsed time.
+This approach allows goals to be recorded even after the timer completes, with the time labeled appropriately.
+
+*/

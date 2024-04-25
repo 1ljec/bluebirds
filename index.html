@@ -87,7 +87,7 @@
         <label>Action:</label>
       </span>
           <select id="actionSelect" class="selectList">
-            <option value="">Select...</option>                 <option>Won midfield battle</option>                 <option>Won defensive battle</option>                <option>Created chance</option> <option>Ran down wing</option>                <option>Floor save</option>                <option>Standing save</option>                <option>Throw in</option><option>Corner</option>            
+            <option value="">Select...</option><option>Cleared danger</option><option>Created chance</option><option>Floor save</option><option>Made great pass</option><option>Ran down wing</option><option>Standing save</option><option>Took Throw in</option><option>Took Corner</option><option>Won midfield battle</option><option>Won defensive battle</option>          
           </select>
           
 <button id="saveButton" class="generalButton" onclick="savePlayerAction()">Save Selection</button>
@@ -177,7 +177,7 @@
 </div>
 
 <!--FORMATIONS-->
-<h2 onclick="showFooter()"> Formations<i id="formationsIcon" class="fa fa-caret-down"> </i></h2>
+<h2 onclick="showFormations()"> Formations<i id="formationsIcon" class="fa fa-caret-down"> </i></h2>
 <div id="expandableDiv5" class="expandableDiv5" >
 
 
@@ -185,6 +185,20 @@
 <img src="images/Matrix.jpg" width="90%" height="90%"/>
 
 </div>
+
+
+<!-- The modal text for vibration on custom modal arning box-->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>End of quarter!</p>
+  </div>
+</div>
+
+<!-- Trigger button -->
+<button onclick="endOfQuarterAlert()">End of Quarter</button>
+
+
 
 </body>
 </html>
