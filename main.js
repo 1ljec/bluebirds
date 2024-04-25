@@ -350,26 +350,25 @@ function saveAndShare() {
 function endOfQuarterAlert() {
   // Vibrate before showing the modal
   if ("vibrate" in navigator) {
-      navigator.vibrate(200);
+      navigator.vibrate(500);
   }
   // Show the modal
   const modal = document.getElementById("myModal");
   modal.style.display = "block";
-}
 
-// Close the modal when the user clicks on <span> (x)
-document.getElementsByClassName("close")[0].onclick = function() {
-document.getElementById("myModal").style.display = "none";
-}
 
+// Close the modal when the close button is clicked
+document.querySelector(".close").addEventListener("click", function() {
+  document.getElementById("myModal").style.display = "none";
+});
+}
 // Close the modal when the user clicks anywhere outside of the modal
-window.onclick = function(event) {
-const modal = document.getElementById("myModal");
-if (event.target == modal) {
-  modal.style.display = "none";
-}
-}
-
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("myModal");
+  if (event.target === modal) {
+      modal.style.display = "none";
+  }
+});
 //ENF OF TEST MODAL FOR VIBRATION TEST
 
 
