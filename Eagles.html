@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/99dc9ba5fc.js" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+    <link rel="stylesheet" href="MatchTracker.css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" href="favicon.ico">
+
+<title>Bluebirds Match Tracker</title>
+</head>
+
+<body>
+
+
+ <!-- TIMER BUTTONS-->
+<div>
+    <button id="timerButton12" onclick="startTimer(12.5)">12.5M</button>
+    <button id="pauseResumeButton" onclick="pauseResumeTimer()" disabled>Pause</button>
+    <button id="timerButton15" onclick="startTimer(15)">15M</button>
+</div>
+
+ <!--TIMERITSELF-->
+  <div id="timerContainer">
+    <div id="timer"  style="padding: 20px;"></div>
+    <p><p id="quarter">Current Quarter: 1</p></p>
+  </div>
+
+
+<!--HOME COLUMN -->
+  <div class="column" id="homeColumn">
+    <h2>Bluebirds <span id="homeScore" class="score-counter">0</span></h2>
+    
+
+      <div class="team-buttons">
+        <button id="goalButtonHome" class="goalButton" onclick="recordGoal('home')">Goal</button>
+        <button id="downButtonHome" class="downButton" onclick="changeScore('home', -1)">-Goal</button>
+        <button id="upButtonHome" class="hiddenButton" onclick="changeScore('home', 1)">GoalHidden</button>
+      </div>
+    <p id="homeElapsedTime"></p>
+  </div>
+
+  <!--OPPOSITION COLUMN-->
+  <div class="column" id="awayColumn">
+    <h2>Opposition <span id="awayScore" class="score-counter">0</span></h2>
+    <div class="team-buttons">
+      <span> <button id="goalButtonAway" class="goalButton" onclick="recordGoal('away')">Goal</button>
+        <button id="downButtonAway" class="downButton" onclick="changeScore('away', -1)">-Goal</button>
+        <button id="upButtonAway" class="hiddenButton" onclick="changeScore('away', 1)">GoalHidden</button>
+      </span>
+    </div>
+    <p id="awayElapsedTime"></p>
+  </div>
+
+ 
+<div></div>
+
+
+<!--MATCH NOTES-->
+
+<div class="accordion"> 
+<h2 onclick="showNotes()"> <i class="fa fa-file-text-o"></i> 
+  <span style="padding: 10px;">Match Notes </span>  
+  <i class="fas fa-caret-down" > </i></h2>
+ 
+
+  <div id="expandableDiv1" class="expandableDiv1">
+
+    <div>
+
+      <textarea id="notesInput" rows="2" cols="30"></textarea>
+
+  <div></div>
+      <span>  
+        <label>Player:</label></span>
+          <select id="playerSelect" class="selectList">
+            <option value="">Select...</option><option>Chanel</option><option>Chloe</option><option>Emma</option><option>Elsie</option><option>Eve</option><option>Freya</option><option>Harriet</option><option>Isla B</option><option>Isla K</option><option>Jenna</option><option>Millie</option><option>Opposition</option>
+          </select>
+
+    <div>
+      <span>
+        <label>Action:</label>
+      </span>
+          <select id="actionSelect" class="selectList">
+            <option value="">Select...</option><option>Cleared danger</option><option>Created chance</option><option>Floor save</option><option>Made great pass</option><option>Ran down wing</option><option>Standing save</option><option>Took Throw in</option><option>Took Corner</option><option>Won midfield battle</option><option>Won defensive battle</option>          
+          </select>
+          
+<button id="saveButton" class="generalButton" onclick="savePlayerAction()">Save Selection</button>
+<button class="generalButton" onclick="addNotes()">Save Text</button>
+<div> <br></div>
+
+<div>
+  <h4>Notes: <div id="matchNotes"></div></h4>
+  <div id="selections"></div>
+ 
+</div> 
+</div>
+</div>
+</div>
+</div>
+   
+
+<!--TRAINING AREAS-->
+
+  <h2> <i class="fas fa-bullseye"></i> <span style="padding: 10px;">Training Areas </span>  <i class="fas fa-caret-down" onclick="toggleDiv('expandableDiv2')"> </i></h2>
+ 
+  <div id="expandableDiv2" class="expandableDiv">
+    <select id="trainingAreaSelect">
+      <option value="">Select...</option><option value="attackingCorners">Attacking Corners</option><option value="defendingCorners">Defending Corners</option><option value="heading">Heading</option>      <option value="throwins">Throw-ins</option>
+    </select>
+    <button onclick="saveTraining()" class="generalButton">Save</button>
+
+    
+</div>
+<div id="trainingAreas"></div>
+  
+
+  <!--AWARDS & SUPPORT-->
+
+  <h2> <i class="fas fa-trophy"></i><span style="padding: 10px;">Awards / Support</span> <i class="fas fa-caret-down" onclick="toggleDiv('expandableDiv3')"> </i></h2>
+  
+  <div id="expandableDiv3" class="expandableDiv">
+    <div>Players' Player:
+      <select id="awardSelectPlayers Player" class="selectList">
+        <option value="">Select...</option><option>Chanel</option><option>Chloe</option><option>Emma</option><option>Elsie</option><option>Eve</option><option>Freya</option><option>Harriet</option><option>Isla B</option><option>Isla K</option><option>Jenna</option><option>Millie</option>
+      </select>
+    </div>       
+    
+    <div>Coaches' Player:
+      <select id="awardSelectCoaches Player" class="selectList">
+        <option value="">Select...</option><option>Chanel</option><option>Chloe</option><option>Emma</option><option>Elsie</option><option>Eve</option><option>Freya</option><option>Harriet</option><option>Isla B</option><option>Isla K</option><option>Jenna</option><option>Millie</option>
+      </select>
+    </div>      
+    
+    <div>Player of Steel:
+      <select id="awardSelectPlayer of Steel" class="selectList">
+        <option value="">Select...</option><option>Chanel</option><option>Chloe</option><option>Emma</option><option>Elsie</option><option>Eve</option><option>Freya</option><option>Harriet</option><option>Isla B</option><option>Isla K</option><option>Jenna</option><option>Millie</option>
+      </select>
+    </div>
+      <h3> </h3>
+    
+      <div>Referee:
+      <select id="awardSelectRef" class="selectList">
+        <option value="">Select...</option><option>Bill</option><option>David</option><option>John</option><option>Paul</option>
+      </select>
+      </div>  
+     
+      
+      <div id="awardsNotes"></div>
+      <button onclick="saveAwards()">Save</button>
+  </div>
+
+<!--TEST SELECT OPTIONS-->
+
+<div id="awards"></div>
+
+
+
+<!--FOOTER-->
+<h2 onclick="showFooter()"> Share & Reset <i id="footerIcon" class="fa fa-caret-down"> </i></h2>
+<div id="expandableDiv4" class="expandableDiv4" >
+ 
+  <!--Legacy Buttons to hide-->
+  <button onclick="copyToClipboard()" class="hiddenButton">Copy Match</button>
+   <button onclick="sharePlayerActions()" class="hiddenButton">Copy Notes</button>
+   <button onclick="shareAwards()" class="hiddenButton">Copy Awards</button>
+ 
+   <!--CURRENT ACTIVE BUTTONS SHARE & RESET-->
+   <button id="clearLocalStorageButton" onclick="clearLocalStorage()">Reset Data</button>
+  <button onclick="saveAndShare()">Save and Share</button>
+
+</div>
+
+<!--FORMATIONS-->
+<h2 onclick="showFormations()"> Formations <i id="formationsIcon" class="fa fa-caret-down"> </i></h2>
+<div id="expandableDiv5" class="expandableDiv5" >
+
+
+<img src="images/Formations-BB.jpg" width="90%" height="90%" />
+<img src="images/Matrix.jpg-BB" width="90%" height="90%"/>
+
+</div>
+
+
+<!-- The modal text for vibration on custom modal Warning box-->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>End of quarter!</p>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+<!--Reusable Player List Eagles
+<option value="">Select...</option><option>Chanel</option><option>Chloe</option><option>Emma</option><option>Elsie</option><option>Eve</option><option>Freya</option><option>Harriet</option><option>Isla B</option><option>Isla K</option><option>Jenna</option><option>Millie</option><option>Opposition</option>
+-->
+
+<!--Reusable referee List
+<option value="">Select...</option><option>Bill</option><option>David</option><option>John</option><option>Paul</option>
+-->
+
