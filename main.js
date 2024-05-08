@@ -231,6 +231,23 @@ function toggleDiv(id) {
             alert('Please select a training area.');
         }
     }
+
+    function saveAwards() {
+      const awardsDiv = document.getElementById('awards');
+      const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
+      
+      awardSelects.forEach((select) => {
+          const selectedOption = select.value;
+          const selectId = select.id;
+          
+          if (selectedOption !== '') {
+              const awardText = document.createTextNode(` ${selectId}: ${selectedOption} \n`);
+              const br = document.createElement('br');
+              awardsDiv.appendChild(awardText);
+              awardsDiv.appendChild(br);
+          }
+      });
+  }
     
 
 //UpdateUI
@@ -308,6 +325,8 @@ function showFormations()    {
     function hideFormations(){
     document.getElementById("expandableDiv5").style.display ='none';
 }
+
+
 
 function saveAndShare() {
     const awardsDiv = document.getElementById('awards');
@@ -421,25 +440,10 @@ function shareAwards() {
 */
 
 
-/*
-function saveAwards() {
-    const awardsDiv = document.getElementById('awards');
-    const awardSelects = document.querySelectorAll('select[id^="awardSelect"]');
-    
-    awardSelects.forEach((select) => {
-        const selectedOption = select.value;
-        const selectId = select.id;
-        
-        if (selectedOption !== '') {
-            const awardText = document.createTextNode(` ${selectId}: ${selectedOption} \n`);
-            const br = document.createElement('br');
-            awardsDiv.appendChild(awardText);
-            awardsDiv.appendChild(br);
-        }
-    });
-}
 
-*/
+
+
+
 
 
 
