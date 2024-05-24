@@ -43,12 +43,15 @@ function toggleDiv(id) {
       const storedHomeGoals = localStorage.getItem('homeGoals');
       const storedAwayGoals = localStorage.getItem('awayGoals');
       const storedCurrentQuarter = localStorage.getItem('currentQuarter');
+      const storedSelections = localStorage.getItem('selections');
+            
 
       if (storedHomeScore !== null) homeScore = parseInt(storedHomeScore);
       if (storedAwayScore !== null) awayScore = parseInt(storedAwayScore);
       if (storedHomeGoals !== null) homeGoals = JSON.parse(storedHomeGoals);
       if (storedAwayGoals !== null) awayGoals = JSON.parse(storedAwayGoals);
       if (storedCurrentQuarter !== null) currentQuarter = parseInt(storedCurrentQuarter);
+      if (storedSelections !== null) selections = JSON.parse(storedSelections);
 
       updateUI();
     }
@@ -282,6 +285,7 @@ function saveToLocalStorage() {
       localStorage.setItem('awayGoals', JSON.stringify(awayGoals));
       localStorage.setItem('currentQuarter', currentQuarter.toString());
       localStorage.setItem('selections', JSON.stringify(homeGoals));
+      
     
     }
 
