@@ -51,8 +51,10 @@ function toggleDiv(id) {
       if (storedHomeGoals !== null) homeGoals = JSON.parse(storedHomeGoals);
       if (storedAwayGoals !== null) awayGoals = JSON.parse(storedAwayGoals);
       if (storedCurrentQuarter !== null) currentQuarter = parseInt(storedCurrentQuarter);
-      if (storedSelections !== null) selections = JSON.parse(storedSelections);
-
+      if (storedSelections !== null) {
+        selections = JSON.parse(storedSelections); // TTD not sure this is working or correct?
+updateSelectionsUI();
+      }
       updateUI();
     }
 
@@ -175,6 +177,18 @@ function toggleDiv(id) {
         saveToLocalStorage();
       }
 
+// Function to update the selections div in the UI - new
+function updateSelectionsUI() {
+  const selectionsDiv = document.getElementById('selections');
+  selectionsDiv.innerHTML = ''; // Clear existing content
+  selections.forEach(selection => {
+    const selectionText = document.createTextNode('Q' + selection.quarter + ' ' + selection.player + ' - ' + selection.action + '\n');
+    const br = document.createElement('br');
+    selectionsDiv.appendChild(selectionText);
+    selectionsDiv.appendChild(br);
+  });
+}
+
 
      // General Notes script to review
      function addNotes() {
@@ -211,11 +225,20 @@ function toggleDiv(id) {
     
     // Function to save & update the selections div
     function updateSelection(player, action) {
-        const selectionsDiv = document.getElementById('selections');
-        const selectionText = document.createTextNode('Q' +currentQuarter + player + ' - ' + action + '\n');
-        const br = document.createElement('br');
-        selectionsDiv.appendChild(selectionText);
-        selectionsDiv.appendChild(br);
+      const selection = {
+        quarter: currentQuarter,
+        player: player,
+        action: action
+      };
+      selections.push(selection);
+    
+      const selectionsDiv = document.getElementById('selections');
+      const selectionText = document.createTextNode('Q' + currentQuarter + ' ' + player + ' - ' + action + '\n');
+      const br = document.createElement('br');
+      selectionsDiv.appendChild(selectionText);
+      selectionsDiv.appendChild(br);
+    
+      saveToLocalStorage();
     }
     
       
@@ -284,7 +307,7 @@ function saveToLocalStorage() {
       localStorage.setItem('homeGoals', JSON.stringify(homeGoals));
       localStorage.setItem('awayGoals', JSON.stringify(awayGoals));
       localStorage.setItem('currentQuarter', currentQuarter.toString());
-      localStorage.setItem('selections', JSON.stringify(homeGoals));
+      localStorage.setItem('selections', JSON.stringify(selections));
       
     
     }
