@@ -1,0 +1,78 @@
+/* Custom CSS */
+
+/* Add padding between tiles and header */
+.main-content {
+    padding-top: 50px; /* Adjust as needed */
+  }
+
+/* Adjusted push animation */
+.push {
+    transition: margin-left 0.5s; /* Use margin-left transition */
+  }
+  
+  @media (min-width: 768px) {
+    .push.active {
+      margin-left: 250px; /* Set margin-left when sidebar is active */
+    }
+  }
+  
+  /* Fixed hamburger icon */
+  #sidebarCollapse {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+    color: #ffffff; /* Set hamburger icon color */
+  }
+
+  
+  
+  /* Header banner */
+  header {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0; /* Set left to 0 to fill the top left of the page */
+    width: 100%;
+    z-index: 2; /* Ensure the header is above other content */
+  }
+  
+  footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Tile styles */
+  .card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    height: 100%; /* Ensure all cards have the same height */
+    min-width: calc(50% - 15px); /* Set minimum width for the cards */
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  .card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Ensure 2x2 layout for tiles */
+  @media (min-width: 576px) {
+    #tiles-container .col-md-12 {
+      flex: 0 0 calc(50% - 15px);
+      max-width: calc(50% - 15px);
+    }
+  }
+  
