@@ -2,9 +2,9 @@
 function createTiles() {
     // Define the tile content
     var tileContent = [
-      { title: 'Eagles Match', icon: 'fa-solid fa-futbol', hyperlink: './eagles.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
+      { title: 'Eagles Match', icon: 'fa-solid fa-futbol', hyperlink: './Eagles.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
       { title: 'Eagles Formations', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-eagles.html',text: 'Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
-      { title: 'Bluebirds Match', icon: 'fa-solid fa-futbol', hyperlink: './bluebirds.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
+      { title: 'Bluebirds Match', icon: 'fa-solid fa-futbol', hyperlink: './Bluebirds.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
       { title: 'Bluebirds Formations', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-bluebirds.html', text: 'Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
       { title: 'Reports', icon:'fa-solid fa-chart-pie', hyperlink: '#', text: 'TBC - holding area for possible reports tracking how many awards each player received throughout the season' },
       { title: 'Opposition Teams', icon:'fa-solid fa-list-ol',  hyperlink: '#', text: 'TBC - list of opposition teams for recording results/reporting purposes' }
