@@ -58,6 +58,7 @@ function updatePlayerCounts() {
         playerCount[player].q2 = 0;
         playerCount[player].q3 = 0;
         playerCount[player].q4 = 0;
+        playerCount[player].q5 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
     });
 
     // Sort players by total quarters played
@@ -83,7 +84,7 @@ tableBody.innerHTML = '';
 
 let totalQuarters = 0;
 sortedPlayers.forEach(player => {
-    const quartersPlayed = playerCount[player].q1 + playerCount[player].q2 + playerCount[player].q3 + playerCount[player].q4;
+    const quartersPlayed = playerCount[player].q1 + playerCount[player].q2 + playerCount[player].q3 + playerCount[player].q4 + playerCount[player].q5;
     totalQuarters += quartersPlayed;
 
     const row = document.createElement('tr');
@@ -282,3 +283,31 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "0";
     document.body.style.backgroundColor = "white";
   }
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+    loadSelections();
+    updatePlayerCounts();
+    document.getElementById('available-players').addEventListener('change', updateAvailablePlayersText);
+    document.getElementById('color-select').addEventListener('change', updateOptionColors);
+    playerSelects.forEach(select => {
+        select.addEventListener('change', () => {
+            saveSelections();
+            updatePlayerCounts();
+        });
+    });
+});
+
+function updateOptionColors() {
+    const colorSelect = document.getElementById('color-select');
+    const selectedOptions = Array.from(colorSelect.selectedOptions).map(option => option.value);
+
+    playerSelects.forEach(select => {
+        Array.from(select.options).forEach(option => {
+            if (selectedOptions.includes(option.value)) {
+                option.classList.add('option-highlight');
+            } else {
+                option.classList.remove('option-highlight');
+            }
+        });
+    });
+}
