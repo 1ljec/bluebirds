@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Excercises</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="trainingstyles.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href=".\eagles.html">Eagles Match</a>
+  <a href=".\formation-3-1-2-Eagles.html">Eagles Formations</a>
+  <a href=".\bluebirds.html">Bluebirds Match</a>
+  <a href=".\formation-3-1-2-Bluebirds.html">Bluebirds Formations</a>
+</div>
+
+<!-- Page content -->
+<div id="main" class="push active">
+  <button id="sidebarCollapse" class="btn btn-dark" onclick="toggleNav()">&#9776;</button>
+  
+
+  <!-- Header banner -->
+  <header>
+    <div class="container">
+      <h1>Training Excercises</h1>
+    </div>
+  </header>
+
+  <div class="container-fluid main-content">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Core content area -->
+        <div class="container mt-5">
+          <div class="row" id="tiles-container">
+            <!-- Tiles will be added dynamically here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copyright footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2024 LJ. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Custom JavaScript -->
+<script src="trainingscripts.js"></script>
+
+</body>
+</html>
