@@ -1,13 +1,13 @@
 const players = [
-    'Abi', 'Amaya', 'Belle', 'Ella',  
-     'Jenna', 'Jodie', 'Lana','Mimi', 'Meg', 
-     'Paige', 'Ruby', 'Sophia L', 'Sophia T', 
-     'Eliza','Issy'
+    'Abi', 'Amaya', 'Belle',  'Issy',
+     'Jenna', 'Mimi', 'Meg', 
+     'Paige', 'Ruby', 'Sophia L', 'Sophia T'
 ];
 
 const playerCount = {};
 players.forEach(player => {
     playerCount[player] = { q1: 0, q2: 0, q3: 0, q4: 0 };
+   // playerCount[player] = { q1: 0, q2: 0, q3: 0, q4: 0, q5:0, q6:0, q7:0 };
 });
 
 const playerSelects = document.querySelectorAll('.player-select');
@@ -19,37 +19,6 @@ playerSelects.forEach(select => {
 const availablePlayersSelect = document.getElementById('availablePlayers');
 const playerInfo = document.getElementById('playerInfo');
 
-//availablePlayersSelect.addEventListener('change', updatePlayerInfo);
-
-function updatePlayerInfo() {
-    const selectedValue = availablePlayersSelect.value;
-    let infoText = "";
-
-    switch (selectedValue) {
-        case '7':
-            infoText = "With 7 Players available, all 7 players will be playing all 4 quarters";
-            break;
-        case '8':
-            infoText = "With 8 Players available, 5 players will be playing all 4 quarters, 2 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '9':
-            infoText = "With 9 Players available, 4 players will be playing all 4 quarters, 4 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '10':
-            infoText = "With 10 Players available, 3 players will be playing all 4 quarters, 6 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '11':
-            infoText = "With 11 Players available, 2 players will be playing all 4 quarters, 8 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '12':
-            infoText = "With 12 Players available, 1 player will be playing all 4 quarters, 9 players will have 3 quarters and 2 players will have 2 quarters of play";
-            break;
-        default:
-            infoText = "";
-    }
-
-    playerInfo.textContent = infoText;
-}
 
 function updatePlayerCounts() {
     // Reset counts
@@ -58,7 +27,9 @@ function updatePlayerCounts() {
         playerCount[player].q2 = 0;
         playerCount[player].q3 = 0;
         playerCount[player].q4 = 0;
-        playerCount[player].q5 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
+    //    playerCount[player].q5 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
+      //  playerCount[player].q6 = 0; //TODO REMOVEQ6 LATER DOWN THE LINE
+        //playerCount[player].q7 = 0; //TODO REMOVEQ7 LATER DOWN THE LINE        
     });
 
     // Sort players by total quarters played
@@ -84,7 +55,8 @@ tableBody.innerHTML = '';
 
 let totalQuarters = 0;
 sortedPlayers.forEach(player => {
-    const quartersPlayed = playerCount[player].q1 + playerCount[player].q2 + playerCount[player].q3 + playerCount[player].q4 + playerCount[player].q5;
+    const quartersPlayed = playerCount[player].q1 + playerCount[player].q2 + playerCount[player].q3 + playerCount[player].q4;
+   // const quartersPlayed = playerCount[player].q1 + playerCount[player].q2 + playerCount[player].q3 + playerCount[player].q4 + playerCount[player].q5 + playerCount[player].q6 + playerCount[player].q7;
     totalQuarters += quartersPlayed;
 
     const row = document.createElement('tr');
@@ -142,18 +114,6 @@ sortedPlayers.forEach(player => {
 
     
     
-    // // Calculate summary statistics
-    // const totalQuartersArray = Object.values(playerCount).map(player => player.q1 + player.q2 + player.q3 + player.q4);
-    // const minQuarters = Math.min(...totalQuartersArray);
-    // const maxQuarters = Math.max(...totalQuartersArray);
-    // const avgQuarters = totalQuartersArray.reduce((acc, val) => acc + val, 0) / totalQuartersArray.length;
-
-    // // Update summary table
-    // document.getElementById('min-quarters').textContent = minQuarters;
-    // document.getElementById('max-quarters').textContent = maxQuarters;
-    // document.getElementById('avg-quarters').textContent = avgQuarters.toFixed(2);
-
-     // Calculate summary statistics
      updateSummaryStatistics();
 }
 
@@ -176,8 +136,6 @@ function updateSummaryStatistics() {
         document.getElementById('avg-quarters').textContent = '0.00';
     }
 }
-
-
 
 // Initialize player info on page load
 updatePlayerInfo();
@@ -226,7 +184,7 @@ function exportDivToPDF(divId) {
  });
 }
 
-
+///////////////////////////////////////////////////////////////////////////
 
 // Save player selections to localStorage
 function saveSelections() {
@@ -310,4 +268,37 @@ function updateOptionColors() {
             }
         });
     });
+}
+
+
+//availablePlayersSelect.addEventListener('change', updatePlayerInfo);
+
+function updatePlayerInfo() {
+    const selectedValue = availablePlayersSelect.value;
+    let infoText = "";
+
+    switch (selectedValue) {
+        case '7':
+            infoText = "With 7 Players available, all 7 players will be playing all 4 quarters";
+            break;
+        case '8':
+            infoText = "With 8 Players available, 5 players will be playing all 4 quarters, 2 players will have 3 quarters and 1 player will have 2 quarters of play";
+            break;
+        case '9':
+            infoText = "With 9 Players available, 4 players will be playing all 4 quarters, 4 players will have 3 quarters and 1 player will have 2 quarters of play";
+            break;
+        case '10':
+            infoText = "With 10 Players available, 3 players will be playing all 4 quarters, 6 players will have 3 quarters and 1 player will have 2 quarters of play";
+            break;
+        case '11':
+            infoText = "With 11 Players available, 2 players will be playing all 4 quarters, 8 players will have 3 quarters and 1 player will have 2 quarters of play";
+            break;
+        case '12':
+            infoText = "With 12 Players available, 1 player will be playing all 4 quarters, 9 players will have 3 quarters and 2 players will have 2 quarters of play";
+            break;
+        default:
+            infoText = "";
+    }
+
+    playerInfo.textContent = infoText;
 }
