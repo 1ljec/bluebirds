@@ -3,11 +3,14 @@ function createTiles() {
     // Define the tile content
     var tileContent = [
       { title: 'Bluebirds Match', icon: 'fa-solid fa-futbol', hyperlink: './Bluebirds.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
-      { title: 'Bluebirds Formations', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-bluebirds.html', text: 'Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      { title: 'Bluebirds Formations 3-1-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-bluebirds.html', text: '3-1-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      { title: 'Bluebirds Formations 3-2-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-2-2-bluebirds.html', text: '3-2-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      { title: 'Bluebirds Formations 3-2-3', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-2-3-bluebirds.html', text: '3-2-3 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      
       { title: 'Eagles Match', icon: 'fa-solid fa-futbol', hyperlink: './Eagles.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
       { title: 'Eagles Formations', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-eagles.html',text: 'Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
       { title: 'Training Excercises', icon:'fa-solid fa-list-ol',  hyperlink: './training.html', text: 'A list & summary info of different training excercises, activities & drills.' },
-      { title: 'Reports', icon:'fa-solid fa-chart-pie', hyperlink: '#', text: 'TBC - holding area for possible reports tracking how many awards each player received throughout the season' }
+      
     ];
   
     // Get the tiles container
