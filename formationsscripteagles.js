@@ -1,6 +1,6 @@
 const players = [
-    'Chanel', 'Chloe', 'Emma', 'Elsie',  
-     'Eve', 'Flora', 'Freya','Harriet', 'Isla B', 
+    'Amelia', 'Chanel', 'Chloe', 'Emma', 'Elsie',  
+     'Eve','Harriet', 'Isla B', 
      'Ilsa K', 'Jenna', 'Millie', 'Rosie'
 ];
 

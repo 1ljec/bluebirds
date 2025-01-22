@@ -1,5 +1,5 @@
 const players = [
-    'Abi', 'Amaya', 'Belle', 'Ella', 'Indi','Issy',
+    'Abi', 'Amaya', 'Arabella', 'Belle', 'Ella', 'Indi','Issy',
      'Jenna', 'Mimi', 'Meg', 
      'Paige', 'Ruby', 'Sophia L', 'Sophia T'
 ];
