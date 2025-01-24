@@ -272,33 +272,3 @@ function updateOptionColors() {
 
 
 //availablePlayersSelect.addEventListener('change', updatePlayerInfo);
-
-function updatePlayerInfo() {
-    const selectedValue = availablePlayersSelect.value;
-    let infoText = "";
-
-    switch (selectedValue) {
-        case '7':
-            infoText = "With 7 Players available, all 7 players will be playing all 4 quarters";
-            break;
-        case '8':
-            infoText = "With 8 Players available, 5 players will be playing all 4 quarters, 2 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '9':
-            infoText = "With 9 Players available, 4 players will be playing all 4 quarters, 4 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '10':
-            infoText = "With 10 Players available, 3 players will be playing all 4 quarters, 6 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '11':
-            infoText = "With 11 Players available, 2 players will be playing all 4 quarters, 8 players will have 3 quarters and 1 player will have 2 quarters of play";
-            break;
-        case '12':
-            infoText = "With 12 Players available, 1 player will be playing all 4 quarters, 9 players will have 3 quarters and 2 players will have 2 quarters of play";
-            break;
-        default:
-            infoText = "";
-    }
-
-    playerInfo.textContent = infoText;
-}
