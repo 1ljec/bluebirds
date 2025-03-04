@@ -155,3 +155,32 @@ padding: 20px;
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  
+.row-4-wide {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.row-4-wide select {
+  width: 23%;
+  margin: 0 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.row-4-narrow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.row-4-narrow select {
+  width: 30%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
