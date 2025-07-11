@@ -12,23 +12,49 @@
 
 </head>
 <body>
-
-   
-      <div id="quarters" class="quarters">
-
-        <header>
+<div>
+<h3>
+    wsdsd
+</h3>
+</div>
+<header>
             <div class="container">
               <h1>Eagles</h1>
             </div>
           </header>
-      <!-- Use any element to open the sidenav -->
-      <!--<span onclick="openNav()">open</span>-->
-      
-      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-      <!--<div id="main">-->
+
+          <div id="MatchDetails" style="padding-top: 100px;">
+            <span>
+                <label for="opposition">Opposition:</label>
+<select id="opposition" onchange="toggleOtherInput()">
+    <option value="">Select Opposition</option>
+    <option value="afc-dunstable-blues">AFC Dunstable Blues</option>
+    <option value="bletchley-scot">Bletchley Scot</option>
+    <option value="linslade-galaxy-jaguars">Linslade Galaxy Jaguars</option>
+    <option value="luton-celtic-youth">Luton Celtic Youth</option>
+    <option value="luton-town-ladies-hatters">Luton Town Ladies Hatters</option>
+    <option value="olney-town-colts-vixens">Olney Town Colts Vixens</option>
+    <option value="real-bedford-ladies-girls-vipers">Real Bedford Ladies & Girls Vipers</option>
+    <option value="stotfold-junior-lilacs">Stotfold Junior Lilacs</option>
+    <option value="woburn-wavendon-lionesses-blues">Woburn & Wavendon (Lionesses) Blues</option>
+    <option value="woburn-wavendon-lionesses-clarets">Woburn & Wavendon (Lionesses) Clarets</option>
+    <option value="other">Other</option>
+</select>
+
+           <label for="match-date">Fixture Date:</label> <input type="date" id="match-date" name="match-date">
+
+        </span>
+          </div>
+          
+   
+      <div id="quarters" class="quarters">
+
+        
+
+    
     
         <div class="quarter" id="q1">
-            <h2>Q1</h2>
+            <h2>H1 Q1</h2>
             <div class="formation">
                 <div class="row">
                     <select class="player-select">
@@ -71,7 +97,7 @@
         </div>
         <!-- Repeat the above block for Q2, Q3, Q4 -->
         <div class="quarter" id="q2">
-            <h2>Q2</h2>
+            <h2>H1 Q2</h2>
             <div class="formation">
                 <div class="row">
                     <select class="player-select">
@@ -112,7 +138,7 @@
             </div>
         </div>
         <div class="quarter" id="q3">
-            <h2>Q3</h2>
+            <h2>H2 Q1</h2>
             <div class="formation">
                 <div class="row">
                     <select class="player-select">
@@ -153,7 +179,7 @@
             </div>
         </div>
         <div class="quarter" id="q4">
-            <h2>Q4</h2>
+            <h2>H2 Q2</h2>
             <div class="formation">
                 <div class="row">
                     <select class="player-select">
@@ -230,9 +256,10 @@
                 </tr>
             </tfoot>
         </table>
-        </div>
+        
     
-
+<div><button class="btn btn-primary" onclick="exportDivToPDF('PlayerQs')">Export Quarter Stats to PDF</button></div>
+</div>
 
     <div>
         <table id="summaryTable">
@@ -258,30 +285,9 @@
     
 </div>
 
-<div><button class="btn btn-primary" onclick="exportDivToPDF('PlayerQs')">Export Player Qs to PDF</button></div>
 <!--</div>-->
 
-<div>
-<!--
-    <div>
-        <br>
-        <label for="availablePlayers">Available Players: </label>
-        <select id="availablePlayers">
-            <option value="">How many players</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-        </select>
-        <p>Player info below</p>
-        <p id="playerInfo"></p>
-        <p>player info above</p>
-    </div>-->
-    <div>Referee for the match: <select><option>Select..</option></select></div>
-    <div>Kit Colour for the match: <select><option>Select..</option></select></div>
-</div>
+
 
     <script src="formationsscripteagles.js"></script>
     

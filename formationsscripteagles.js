@@ -6,7 +6,7 @@ const players = [
 
 const playerCount = {};
 players.forEach(player => {
-    playerCount[player] = { q1: 0, q2: 0, q3: 0, q4: 0, q5: 0, q6:0, q7:0 };
+    playerCount[player] = { q1: 0, q2: 0, q3: 0, q4: 0 };
 });
 
 const playerSelects = document.querySelectorAll('.player-select');
@@ -29,9 +29,7 @@ function updatePlayerCounts() {
         playerCount[player].q2 = 0;
         playerCount[player].q3 = 0;
         playerCount[player].q4 = 0;
-     //   playerCount[player].q5 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
-      //  playerCount[player].q6 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
-       // playerCount[player].q7 = 0; //TODO REMOVEQ5 LATER DOWN THE LINE
+   
     });
 
     // Sort players by total quarters played
@@ -177,7 +175,7 @@ function exportDivToPDF(divId) {
      console.log('All images loaded, proceeding with PDF export.');
      const opt = {
          margin:       0.25,
-         filename:     divId+'_content.pdf',
+         filename:     divId+'_formations.pdf',
          image:        { type: 'jpeg', quality: 0.98 },
          html2canvas:  { scale: 2, useCORS: true },
          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
