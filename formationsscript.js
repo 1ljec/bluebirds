@@ -272,3 +272,65 @@ function updateOptionColors() {
 
 
 //availablePlayersSelect.addEventListener('change', updatePlayerInfo);
+
+
+// formations.js
+
+// formations per quarter (rows = how many players in each row)
+const formations = {
+  Q1: [2, 1, 3, 1],
+  Q2: [2, 3, 3, 1],
+  Q3: [2, 3, 3, 1],
+  Q4: [2, 3, 3, 1]
+};
+
+function createSelect() {
+  const select = document.createElement("select");
+  select.className =
+    "player-select w-full rounded-lg border border-gray-300 p-2 focus:ring-2 focus:ring-blue-500";
+
+  // Default option
+  const defaultOpt = document.createElement("option");
+  defaultOpt.value = "";
+  defaultOpt.textContent = "Select..";
+  select.appendChild(defaultOpt);
+
+  // Add players (reuses players from players.js)
+  players.forEach(player => {
+    const opt = document.createElement("option");
+    opt.value = player;
+    opt.textContent = player;
+    select.appendChild(opt);
+  });
+
+  return select;
+}
+
+function renderFormations() {
+  const container = document.getElementById("formationsContainer");
+
+  Object.entries(formations).forEach(([quarter, rows]) => {
+    const card = document.createElement("div");
+    card.className = "rounded-2xl shadow-md bg-white p-6";
+
+    const title = document.createElement("h2");
+    title.className = "text-xl font-semibold text-gray-800 mb-4";
+    title.textContent = quarter;
+    card.appendChild(title);
+
+    rows.forEach(numPlayers => {
+      const row = document.createElement("div");
+      row.className = `grid grid-cols-${numPlayers} gap-4 mb-4`;
+
+      for (let i = 0; i < numPlayers; i++) {
+        row.appendChild(createSelect());
+      }
+      card.appendChild(row);
+    });
+
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", renderFormations);
+
