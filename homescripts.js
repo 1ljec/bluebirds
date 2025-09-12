@@ -3,10 +3,11 @@ function createTiles() {
     // Define the tile content
     var tileContent = [
       { title: 'Bluebirds Match', icon: 'fa-solid fa-futbol', hyperlink: './Bluebirds.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
-      { title: 'Bluebirds Formations 7v7 3-1-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-bluebirds.html', text: '3-1-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
-      { title: 'Bluebirds Formations 8v8 3-2-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-2-2-bluebirds.html', text: '3-2-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      { title: 'Bluebirds Formations 9v9 3-3-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-3-2-bluebirds.html', text: '3-3-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },      
       { title: 'Bluebirds Formations 9v9 3-2-3', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-2-3-bluebirds.html', text: '3-2-3 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
       { title: 'Bluebirds Formations 9v9 3-3-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-3-2-bluebirds.html', text: '3-3-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },      
+      { title: 'Bluebirds Formations 8v8 3-2-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-2-2-bluebirds.html', text: '3-2-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
+      { title: 'Bluebirds Formations 7v7 3-1-2', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-1-2-bluebirds.html', text: '3-1-2 - Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
       
       { title: 'Eagles Match', icon: 'fa-solid fa-futbol', hyperlink: './Eagles.html', text: 'Make notes on the game, record goals as they happen and use 12.5m/15m timer' },
       { title: 'Eagles Formations 9v9 3-4-1', icon:'fa-solid fa-bezier-curve', hyperlink: './formation-3-4-1-eagles.html',text: 'Create match plans & formations and see summary infomation on how many quarters each players are on pitch' },
