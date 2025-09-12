@@ -1,7 +1,7 @@
 const players = [
     'Amelia', 'Chanel',  'Elsie',  
      'Harriet', 'Isla B',  'Molly' , 
-     'Naynah', 'NewPlayer1'
+     'Naynah', 'Lily'
 ];
 
 const playerCount = {};

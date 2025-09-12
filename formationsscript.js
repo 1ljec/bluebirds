@@ -1,7 +1,7 @@
 const players = [
     'Abi', 'Amaya', 'Arabella', 'Belle', 'Emily', 'Indi','Issy',
       'Mimi', 'Meg', 'Paige', 'Poppy',
-      'Ruby', 'Sophia L', 'Sophia T' , 'New player select'
+      'Ruby', 'Sophia L', 'Sophia T'
 ];
 
 const playerCount = {};
